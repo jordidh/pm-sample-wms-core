@@ -1,0 +1,116 @@
+{
+  "title": "EVM Metrics",
+  "project_name": "Warehouse Inventory & Storage Management REST API (WMS Core)",
+  "version": "1.0",
+  "date": "2026-10-17",
+  "changelog": [
+    {
+      "version": "1.0",
+      "date": "2026-10-17",
+      "change_description": "Initial version"
+    }
+  ],
+  "status_date": "2026-10-17",
+  "currency": "USD",
+  "bac": 160000.0,
+  "pv": 160000.0,
+  "ev": 0.0,
+  "ac": 0.0,
+  "cv": 0.0,
+  "sv": -160000.0,
+  "cpi": 1.0,
+  "spi": 0.0,
+  "eac": 160000.0,
+  "eac_method": "BAC / CPI",
+  "etc": 160000.0,
+  "vac": 0.0,
+  "tcpi": 1.0,
+  "work_packages": [
+    {
+      "id": "1.1.1",
+      "name": "Core PostgreSQL Schema Design",
+      "bac": 24000.0,
+      "percent_complete": 0.0,
+      "pv": 24000.0,
+      "ev": 0.0,
+      "ac": 0.0
+    },
+    {
+      "id": "1.1.2",
+      "name": "Migration Scripts & Rollback Mechanisms",
+      "bac": 16000.0,
+      "percent_complete": 0.0,
+      "pv": 16000.0,
+      "ev": 0.0,
+      "ac": 0.0
+    },
+    {
+      "id": "1.2.1",
+      "name": "JWT/OAuth2 RBAC Token Validation",
+      "bac": 24000.0,
+      "percent_complete": 0.0,
+      "pv": 24000.0,
+      "ev": 0.0,
+      "ac": 0.0
+    },
+    {
+      "id": "1.2.2",
+      "name": "Role-Based Permission Enforcement Decorators",
+      "bac": 16000.0,
+      "percent_complete": 0.0,
+      "pv": 16000.0,
+      "ev": 0.0,
+      "ac": 0.0
+    },
+    {
+      "id": "1.3.1",
+      "name": "RFC 7807 problem+json Exception Handlers",
+      "bac": 16000.0,
+      "percent_complete": 0.0,
+      "pv": 16000.0,
+      "ev": 0.0,
+      "ac": 0.0
+    },
+    {
+      "id": "1.3.2",
+      "name": "OpenAPI Documentation Skeleton Setup",
+      "bac": 16000.0,
+      "percent_complete": 0.0,
+      "pv": 16000.0,
+      "ev": 0.0,
+      "ac": 0.0
+    },
+    {
+      "id": "1.4.1",
+      "name": "Dockerfile & Containerization Setup",
+      "bac": 16000.0,
+      "percent_complete": 0.0,
+      "pv": 16000.0,
+      "ev": 0.0,
+      "ac": 0.0
+    },
+    {
+      "id": "1.4.2",
+      "name": "Automated CI Pipeline with Test Coverage Gates",
+      "bac": 32000.0,
+      "percent_complete": 0.0,
+      "pv": 32000.0,
+      "ev": 0.0,
+      "ac": 0.0
+    }
+  ],
+  "s_curve": [
+    {
+      "period": "Period 1",
+      "date": "2026-10-17",
+      "cumulative_pv": 160000.0,
+      "cumulative_ev": 0.0,
+      "cumulative_ac": 0.0
+    }
+  ],
+  "assumptions": [
+    "No actuals have been reported as of the status date 2026-10-17, therefore AC is 0 and physical percent complete is 0 for all work packages.",
+    "Earned value (EV) is set to 0 and actual cost (AC) is set to 0 for baseline performance measurement at status date.",
+    "Cost per effort hour is assumed uniformly valued across all work packages to distribute the total budget proportionally based on effort hours."
+  ]
+}
