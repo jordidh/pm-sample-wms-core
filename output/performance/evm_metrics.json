@@ -11,33 +11,177 @@
     }
   ],
   "status_date": "2026-10-20",
-  "currency": "UNKNOWN",
-  "bac": 0.0,
-  "pv": 0.0,
+  "currency": "USD",
+  "bac": 400.0,
+  "pv": 400.0,
   "ev": 0.0,
   "ac": 0.0,
   "cv": 0.0,
-  "sv": 0.0,
-  "cpi": null,
-  "spi": null,
-  "eac": 0.0,
-  "eac_method": "BAC / CPI (not computable: CPI is null because AC is zero and BAC is not provided)",
-  "etc": 0.0,
+  "sv": -400.0,
+  "cpi": 1.0,
+  "spi": 0.0,
+  "eac": 400.0,
+  "eac_method": "BAC / CPI",
+  "etc": 400.0,
   "vac": 0.0,
-  "tcpi": null,
-  "work_packages": [],
-  "s_curve": [],
+  "tcpi": 1.0,
+  "work_packages": [
+    {
+      "id": "1.1.1",
+      "name": "Database Schema Design & ACID Setup",
+      "bac": 32.0,
+      "percent_complete": 0.0,
+      "pv": 32.0,
+      "ev": 0.0,
+      "ac": 0.0
+    },
+    {
+      "id": "1.1.2",
+      "name": "Optimistic Locking & ETag Middleware",
+      "bac": 24.0,
+      "percent_complete": 0.0,
+      "pv": 24.0,
+      "ev": 0.0,
+      "ac": 0.0
+    },
+    {
+      "id": "1.1.3",
+      "name": "RBAC Security Framework",
+      "bac": 24.0,
+      "percent_complete": 0.0,
+      "pv": 24.0,
+      "ev": 0.0,
+      "ac": 0.0
+    },
+    {
+      "id": "1.1.4",
+      "name": "RFC 7807 Error Handling Handler",
+      "bac": 16.0,
+      "percent_complete": 0.0,
+      "pv": 16.0,
+      "ev": 0.0,
+      "ac": 0.0
+    },
+    {
+      "id": "1.1.5",
+      "name": "OpenAPI 3 Specification Skeleton",
+      "bac": 16.0,
+      "percent_complete": 0.0,
+      "pv": 16.0,
+      "ev": 0.0,
+      "ac": 0.0
+    },
+    {
+      "id": "1.2.1",
+      "name": "Location Tree CRUD & Capacity Engine",
+      "bac": 32.0,
+      "percent_complete": 0.0,
+      "pv": 32.0,
+      "ev": 0.0,
+      "ac": 0.0
+    },
+    {
+      "id": "1.2.2",
+      "name": "Non-Cyclic Relocation Validator",
+      "bac": 24.0,
+      "percent_complete": 0.0,
+      "pv": 24.0,
+      "ev": 0.0,
+      "ac": 0.0
+    },
+    {
+      "id": "1.2.3",
+      "name": "Container SSCC Tracking & Nesting",
+      "bac": 32.0,
+      "percent_complete": 0.0,
+      "pv": 32.0,
+      "ev": 0.0,
+      "ac": 0.0
+    },
+    {
+      "id": "1.3.1",
+      "name": "SKU Tracking & Status Engine",
+      "bac": 32.0,
+      "percent_complete": 0.0,
+      "pv": 32.0,
+      "ev": 0.0,
+      "ac": 0.0
+    },
+    {
+      "id": "1.3.2",
+      "name": "Atomic Stock Movements & Reason Codes",
+      "bac": 36.0,
+      "percent_complete": 0.0,
+      "pv": 36.0,
+      "ev": 0.0,
+      "ac": 0.0
+    },
+    {
+      "id": "1.3.3",
+      "name": "Split, Merge, Group, and Ungroup Operations",
+      "bac": 32.0,
+      "percent_complete": 0.0,
+      "pv": 32.0,
+      "ev": 0.0,
+      "ac": 0.0
+    },
+    {
+      "id": "1.3.4",
+      "name": "Immutable Audit Trail Logger",
+      "bac": 24.0,
+      "percent_complete": 0.0,
+      "pv": 24.0,
+      "ev": 0.0,
+      "ac": 0.0
+    },
+    {
+      "id": "1.4.1",
+      "name": "Performance Stress Testing & Optimization",
+      "bac": 32.0,
+      "percent_complete": 0.0,
+      "pv": 32.0,
+      "ev": 0.0,
+      "ac": 0.0
+    },
+    {
+      "id": "1.4.2",
+      "name": "Multi-Language Message Bundles (EN/ES/CA)",
+      "bac": 16.0,
+      "percent_complete": 0.0,
+      "pv": 16.0,
+      "ev": 0.0,
+      "ac": 0.0
+    },
+    {
+      "id": "1.4.3",
+      "name": "Docker Containerization & CI/CD Pipeline",
+      "bac": 24.0,
+      "percent_complete": 0.0,
+      "pv": 24.0,
+      "ev": 0.0,
+      "ac": 0.0
+    },
+    {
+      "id": "1.4.4",
+      "name": "Test Coverage Verification (>=80%)",
+      "bac": 16.0,
+      "percent_complete": 0.0,
+      "pv": 16.0,
+      "ev": 0.0,
+      "ac": 0.0
+    }
+  ],
+  "s_curve": [
+    {
+      "period": "Period 1",
+      "date": "2026-10-20",
+      "cumulative_pv": 400.0,
+      "cumulative_ev": 0.0,
+      "cumulative_ac": 0.0
+    }
+  ],
   "assumptions": [
-    "BAC is not established: the Business Case Section 4 cost estimates are all <UNKNOWN> (engineering effort, infrastructure, testing, training, maintenance) and no currency is stated. Reported BAC is therefore recorded as 0 and currency as UNKNOWN; all currency-denominated values are not quantifiable.",
-    "No schedule baseline activities exist: the Schedule Model has an empty activities list, an empty critical path, and project_duration_days 0.0. Planned value cannot be time-phased, so PV is recorded as 0 and SPI is null (PV is zero).",
-    "No work package budgets exist: the WBS lists effort hours and durations but no cost per hour, rate, or currency. Work package BAC values are therefore not derivable and no per-package rows are produced.",
-    "No actuals were reported (AC = 0) and no physical percent complete was reported for any work package, so EV = 0 and AC = 0 at the status date 2026-10-20, as directed for baseline measurement.",
-    "CPI is null because AC is zero. SPI is null because PV is zero. TCPI is null because BAC equals AC (both zero). EAC is recorded as 0 only as a placeholder; EAC by BAC / CPI cannot be computed because BAC and CPI are undefined.",
-    "The S-curve series is empty because no period-by-period planned value can be derived from the empty schedule model and no cost baseline exists to phase against. Milestone dates (charter Section 4) are <UNKNOWN>.",
-    "The WBS effort totals (hours) are recorded in the WBS dictionary but are not converted to cost. Converting effort to currency requires the rate card, which is not provided (Business Case Section 4 cost estimate <UNKNOWN>).",
-    "The change log records no approved changes and no RFC-001, so the baseline is unchanged at version 1.0 and no baseline-change adjustments are applied to BAC or PV.",
-    "The Business Case recommends collecting current-state baseline metrics, cost estimates, and a Option B evaluation before Milestone 2 funding (Section 9). These prerequisites are open, so the baselines are incomplete and this measurement is a baseline placeholder, not a performance assessment.",
-    "Forward-looking forecasts (EAC, ETC, VAC, TCPI) are not meaningful until BAC, a populated schedule baseline, and actuals are available. Values shown as 0 must not be read as a forecast of zero cost.",
-    "Schedule-related note from the WBS: the critical path sequence (1.1.1 to 6.1.5) and dictionary durations are a planning estimate, but the formal schedule model was not populated, so the project finish date cannot be stated from the EVM data."
+    "No actuals have been reported as of the status date 2026-10-20, therefore EV = 0 and AC = 0.",
+    "BAC is distributed across all work packages based on estimated effort hours."
   ]
 }

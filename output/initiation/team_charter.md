@@ -1,166 +1,73 @@
 # Team Charter: Warehouse Inventory & Storage Management REST API (WMS Core)
 
-| Field | Value |
-| --- | --- |
-| Document | Team Charter |
-| Project Name | Warehouse Inventory & Storage Management REST API (WMS Core) |
-| Current Version | 1.0 |
-| Date | 2026-10-20 |
+## Document Control
+- **Project Name:** Warehouse Inventory & Storage Management REST API (WMS Core)
+- **Current Version:** 1.0
+- **Date:** 2026-10-20
 
-## Changelog
-
+### Changelog
 | Version | Date | Change Description |
-| --- | --- | --- |
-| 1.0 | 2026-10-20 | Initial version |
+|---|---|---|
+| 1.0 | 2026-10-20 | Initial version of the team charter. |
 
-## 1. Purpose
+---
 
-This charter defines how the WMS Core delivery team works together: values, working norms, meeting cadence, decision-making, communication, conflict resolution, quality expectations, and review. It operates within the Business Case and Project Charter v1.0 and the Stakeholder Register v1.0.
+## 1. Team Values
+- **Uncompromising Integrity & Accuracy:** We treat inventory data with absolute precision. No negative inventory, no race conditions, and complete auditability.
+- **Developer Empathy:** We build clean, predictable, and self-documenting APIs that other developers love to integrate with (standard REST, OpenAPI 3, RFC 7807 error handling).
+- **Collective Ownership:** Code belongs to the team. We succeed together, share knowledge openly, and maintain high standards through collaborative peer review.
+- **Pragmatic Quality:** We balance rigorous architectural foundations (ACID compliance, optimistic locking) with iterative, milestone-driven delivery.
 
-**Assumptions:**
-* Team members and their names are not provided (<UNKNOWN>). Roles are referenced as in the Stakeholder Register.
-* Team size and location/time-zone are not provided. Synchronous ceremonies assume a shared working window (assumed).
-* Iteration length is assumed to be two weeks, per the Project Charter (to be confirmed by the Project Manager).
+---
 
-## 2. Team Values
+## 2. Working Norms & Operating Agreements
+- **Code Quality & Testing:** Every pull request requires automated test coverage of $\ge 80\%$ and must pass all CI checks before merging.
+- **API-First Mindset:** Changes to endpoints, data models, or error formats must be reflected in the OpenAPI 3 specification prior to implementation.
+- **Trunk-Based Development:** We use short-lived feature branches merged frequently into the development branch via pull requests.
+- **No Silent Failures:** Error responses must strictly adhere to RFC 7807 (`application/problem+json`) with actionable machine-readable error codes and zero exposure of internal stack traces.
 
-1. **Traceability first:** Every stock change must be explainable, recorded, and reviewable.
-2. **Accuracy over speed:** No shortcut that risks negative inventory, orphaned containers, or race conditions.
-3. **Transparency:** Blockers, risks, and disagreements are raised early and in writing.
-4. **Shared ownership:** Anyone can raise a defect or a design concern; the team owns quality, not only QA.
-5. **Consumer empathy:** The API is a product for integrators and operators; clear contracts and clear errors matter.
-6. **Respect and psychological safety:** Challenge ideas, not people.
+---
 
-## 3. Working Norms and Operating Agreements
+## 3. Meeting Cadence & Ceremonies
+- **Daily Standup (15 mins):** Synchronize on progress, identify blockers, and align on daily goals.
+- **Sprint Planning & Backlog Grooming (Bi-weekly):** Review upcoming milestone deliverables, estimate user stories, and refine backlog priorities.
+- **Sprint Review & Demo (Bi-weekly):** Demonstrate working software and completed modules (Locations, Containers, Stocks) against acceptance criteria.
+- **Retrospective (Bi-weekly):** Reflect on team processes, identify friction points, and agree on continuous improvement action items.
 
-### 3.1 Ways of Working
-* Hybrid delivery: fixed contracts and milestone gates (M1–M4); adaptive delivery within each milestone.
-* Work is tracked in a single backlog; every item links to a requirement ID (REQ-001 – REQ-038) or a documented change.
-* Work-in-progress limits are agreed by the Technical Lead and reviewed each iteration (assumed).
-* Definition of Ready is applied before an item enters an iteration (see Section 8).
+---
 
-### 3.2 Contracts and Baselines
-* Data model, transactional rules, RBAC boundaries, and error contract are baselined at M1 and changed only through change control.
-* Changes to the error code catalog (e.g., `LOCATION_NOT_EMPTY`, `STOCK_INSUFFICIENT_QUANTITY`) require Technical Lead approval and a changelog entry.
-* No change to strategic objectives without a formal change request and Sponsor approval (major version).
+## 4. Decision-Making Process
+- **Consensus-Driven Technical Design:** Day-to-day architectural and implementation decisions are made collaboratively within the engineering team.
+- **Escalation Path:** If technical consensus cannot be reached within 48 hours, the Tech Lead makes the final binding decision.
+- **Strategic Changes:** Scope modifications, timeline shifts, or strategic objective changes must be approved by the Project Sponsor.
 
-### 3.3 Code and Collaboration
-* Trunk-based development with short-lived branches (assumed); all changes via reviewed pull requests.
-* At least one peer review per change; security-relevant changes (auth, RBAC, error masking, audit log) require Security & Compliance Owner review.
-* No secrets, stack traces, or internal schema details in responses, logs visible externally, or commits.
-* Pipeline must be green before merge.
+---
 
-### 3.4 Working Agreements
-* Respect agreed working hours and time zones (to be confirmed).
-* Protect focus time; use async channels by default unless the issue is blocking.
-* Document decisions in the decision log, not only in chat.
-* Leave the codebase and documentation in a better state than found.
+## 5. Communication Channels & Response Expectations
+- **Primary Chat (Slack / MS Teams):** For daily asynchronous communication, quick questions, and alerting.
+- **Asynchronous Response Expectation:** Team members should acknowledge direct queries within 4 business hours during working hours.
+- **Issue Tracking (Jira / GitHub Issues):** For task management, bug tracking, and tracking requirements against milestones (REQ-001 through REQ-038).
+- **Urgent Production / CI Failures:** Immediate escalation via designated paging or high-priority chat channel.
 
-## 4. Meeting Cadence and Ceremonies
+---
 
-| Ceremony | Frequency | Duration (assumed) | Participants | Purpose | Facilitator |
-| --- | --- | --- | --- | --- | --- |
-| Daily stand-up | Daily | 15 min | Development, QA, DevOps, Technical Lead | Progress, blockers, same-day plan | Technical Lead (or rotating developer) |
-| Iteration planning | Start of each 2-week iteration | 2 hours | Team, Project Manager, Business Owner (for scope) | Commit to iteration goal and backlog items meeting Definition of Ready | Project Manager |
-| Backlog refinement | Weekly | 60 min | Technical Lead, Development, QA, Business Owner (as needed) | Clarify acceptance criteria, split stories, analyze edge cases (split/merge/group) | Technical Lead |
-| Iteration review / demo | End of each iteration | 60 min | Team, Business Owner, Warehouse Supervisors, Sponsor (optional) | Demonstrate working increments; collect feedback | Business Owner |
-| Iteration retrospective | End of each iteration | 45 min | Team and Project Manager | Improve process; agree 1–2 improvement actions | Project Manager |
-| Architecture and design review | As needed, minimum at M1 | 60 min | Technical Lead, Development, DevOps, Security | Review schema, concurrency design, error contract | Technical Lead |
-| Milestone gate review | End of M1, M2, M3, M4 | 90 min | Steering committee, Team, Security (M1, M4) | Gate decision against exit criteria | Project Manager |
-| Steering committee | Monthly (assumed) | 60 min | Sponsor, PM, Business Owner, Technical Lead, Finance | Status, risks, changes, funding | Project Manager |
-| Risk and issue review | Weekly | 30 min | Project Manager, Technical Lead, Business Owner | Review RAID log | Project Manager |
+## 6. Conflict Resolution
+- **Direct & Respectful Dialogue:** Address technical and interpersonal disagreements openly and constructively, focusing on data and architectural principles rather than personalities.
+- **Mediation:** If a disagreement stalls progress, the Tech Lead steps in to mediate and facilitate a compromise.
+- **Retrospective Integration:** Recurring sources of friction are brought to the bi-weekly retrospective to establish systemic preventative agreements.
 
-## 5. Decision-Making Process
+---
 
-Decisions follow the RACI matrix in the Stakeholder Register (v1.0).
+## 7. Definition of Done (DoD)
+An item, story, or milestone deliverable is considered "Done" when:
+1. Code is fully implemented and passes all local and CI automated tests.
+2. Test coverage for new/modified code meets or exceeds the $\ge 80\%$ threshold.
+3. API endpoints are fully documented in OpenAPI 3 / Swagger.
+4. Error handling complies strictly with RFC 7807 (`application/problem+json`).
+5. Code has successfully passed at least one peer review.
+6. Automated health checks and structured logging are validated in the containerized environment.
 
-| Decision Type | Decision Owner (Accountable) | Process |
-| --- | --- | --- |
-| Technical design within a baselined contract (e.g., internal implementation) | Technical Lead | Propose in design review or PR; consult team; decide within 2 working days (assumed) |
-| Business rule interpretation (stock status, reason codes, write-off policy) | Business Owner | Raise question in refinement; document decision; update acceptance criteria |
-| Scope refinement (minor version) | Project Manager | Written proposal; consult Business Owner and Technical Lead; record in changelog |
-| Strategic objective change (major version) | Project Sponsor | Formal change request; sponsor approval; charter re-baselined |
-| Milestone gate | Project Sponsor | Gate review against exit criteria; go/no-go recorded |
-| Security-relevant design | Technical Lead, with Security & Compliance Owner review | Security review before merge; findings must be closed or formally accepted |
+---
 
-**Escalation path:** Team member → Technical Lead or Business Owner (within 1 working day) → Project Manager (within 2 working days) → Project Sponsor (for scope, budget, or strategic conflict).
-
-**Decision log:** Every decision is recorded with date, owner, rationale, and affected requirement IDs.
-
-## 6. Communication Channels and Response Expectations
-
-| Channel | Use For | Response Expectation (assumed) |
-| --- | --- | --- |
-| Team chat (channel) | Day-to-day questions, quick clarifications | Within 4 working hours during working window |
-| Issue tracker | Work items, defects, acceptance criteria, decisions requiring tracking | Triage within 1 working day |
-| Pull request review | Code and design changes | First review within 1 working day |
-| Document repository | Charter, register, changelogs, specifications | Read before related meetings |
-| Email | External stakeholders, formal notices | Within 2 working days |
-| Incident channel | Production or CI-breaking issues | Acknowledge within 30 minutes during hours of operation (assumed) |
-| Steering and gate reports | Sponsor and steering decisions | Per the cadence in the Stakeholder Register |
-
-**Rules:**
-* Blocking issues are raised in the stand-up and in the issue tracker the same day.
-* Urgent production or security issues go to the incident channel, not to direct messages.
-* Decisions made in chat are restated in the issue tracker within 1 working day.
-
-## 7. Conflict Resolution
-
-1. **Address directly and early:** Discuss the issue one-to-one, focusing on facts and the requirement.
-2. **Structured discussion:** If unresolved, bring it to the Technical Lead or Business Owner in a short, documented discussion.
-3. **Decision by the accountable owner:** Use the RACI owner for the decision type (Section 5).
-4. **Escalation:** Unresolved conflicts go to the Project Manager, then the Project Sponsor for scope, budget, or strategic issues.
-5. **Record:** Record the outcome in the decision log; review at the next retrospective if the pattern repeats.
-
-Disagreements about design are settled by the Technical Lead after considering input; once decided, the team commits to the decision and may revisit it with new evidence at the next design review.
-
-## 8. Definition of Ready and Definition of Done / Quality Expectations
-
-### 8.1 Definition of Ready
-* Requirement ID(s) linked and acceptance criteria written, including error codes and RFC 7807 responses where applicable.
-* Business rules for edge cases (e.g., split, merge, group, ungroup, cyclic move, over-capacity) are defined.
-* Dependencies identified (identity provider, test data, environments).
-* Sized by the team and fits within the iteration.
-
-### 8.2 Definition of Done
-* Code is implemented, peer reviewed, and merged; CI pipeline is green.
-* Automated tests cover the acceptance criteria, including negative and concurrency cases for stock operations.
-* Overall automated test coverage stays at or above 80%.
-* Optimistic locking (ETag/version) and transactional rollback are verified for multi-record operations.
-* RFC 7807 responses are returned with machine-readable error codes; 5xx responses are masked and include `trace_id`.
-* Movement log entries are created for every stock mutation and verified.
-* RBAC enforced for `admin`, `supervisor`, and `operator` roles.
-* OpenAPI 3 specification updated and published in Swagger UI.
-* Structured JSON logs and health check endpoints available for the affected component.
-* Localization keys added for EN, ES, and CA (where user-facing messages change).
-* Documentation and changelog updated.
-* Demonstrated at the iteration review.
-
-### 8.3 Quality Expectations
-* Performance: p95 < 300 ms single-item reads; < 1 s list and aggregate queries over 100k records (validated at M4 and tracked earlier).
-* Zero negative-inventory, over-capacity, or orphaned-container records in acceptance testing.
-* Security reviews at M1 and M4 are completed before gate approval.
-
-## 9. Team Health and Continuous Improvement
-
-* Retrospectives track one or two improvement actions per iteration and review previous actions.
-* Workload concerns are raised at the retrospective or directly with the Project Manager.
-* Knowledge sharing: pair or mob sessions for stock operation logic (split, merge, group) to reduce single-person dependency (assumed).
-
-## 10. Charter Review and Maintenance
-
-* **Owner:** Project Manager, with the Technical Lead as co-owner.
-* **Review cadence:** At each milestone gate (M1–M4) and at least once per quarter (assumed).
-* **Triggers for ad hoc review:** Repeated conflict pattern, missed commitments, new team members, change to the delivery approach, or a major change request.
-* **Change process:** Proposed change is posted to the issue tracker; team consensus is sought; Project Manager approves minor refinements (minor version), and Sponsor approval is required if the charter changes strategic objectives (major version).
-* **Versioning:** Changes are recorded in the changelog with version, date, and description.
-
-## 11. Acceptance
-
-| Role | Name | Signature | Date |
-| --- | --- | --- | --- |
-| Project Manager | <UNKNOWN> | | |
-| Technical Lead | <UNKNOWN> | | |
-| Business Owner | <UNKNOWN> | | |
-| Development Team Representative | <UNKNOWN> | | |
-| QA / Test Lead | <UNKNOWN> | | |
+## 8. Charter Review
+- This Team Charter is reviewed and reaffirmed by the delivery team at the start of each major project milestone to ensure alignment with evolving project needs and team dynamics.

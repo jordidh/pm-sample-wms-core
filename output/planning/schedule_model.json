@@ -1,5 +1,5 @@
 {
-  "title": "Schedule Model: Warehouse Inventory & Storage Management REST API (WMS Core) - Predictive Components",
+  "title": "WMS Core Schedule Baseline Model",
   "project_name": "Warehouse Inventory & Storage Management REST API (WMS Core)",
   "version": "1.0",
   "date": "2026-10-20",
@@ -7,11 +7,333 @@
     {
       "version": "1.0",
       "date": "2026-10-20",
-      "change_description": "Initial version"
+      "change_description": "Initial schedule baseline model."
     }
   ],
   "time_unit": "days",
-  "activities": [],
-  "critical_path": [],
-  "project_duration_days": 0.0
+  "activities": [
+    {
+      "id": "1.1.1",
+      "name": "Database Schema Design & ACID Setup",
+      "duration_days": 4.0,
+      "effort_hours": 32.0,
+      "predecessors": [],
+      "early_start": 0.0,
+      "early_finish": 4.0,
+      "late_start": 0.0,
+      "late_finish": 4.0,
+      "total_float": 0.0,
+      "on_critical_path": true
+    },
+    {
+      "id": "1.1.2",
+      "name": "Optimistic Locking & ETag Middleware",
+      "duration_days": 3.0,
+      "effort_hours": 24.0,
+      "predecessors": [
+        {
+          "predecessor_id": "1.1.1",
+          "type": "FS",
+          "lag_days": 0.0
+        }
+      ],
+      "early_start": 4.0,
+      "early_finish": 7.0,
+      "late_start": 4.0,
+      "late_finish": 7.0,
+      "total_float": 0.0,
+      "on_critical_path": true
+    },
+    {
+      "id": "1.1.3",
+      "name": "RBAC Security Framework",
+      "duration_days": 3.0,
+      "effort_hours": 24.0,
+      "predecessors": [
+        {
+          "predecessor_id": "1.1.1",
+          "type": "FS",
+          "lag_days": 0.0
+        }
+      ],
+      "early_start": 4.0,
+      "early_finish": 7.0,
+      "late_start": 4.0,
+      "late_finish": 7.0,
+      "total_float": 0.0,
+      "on_critical_path": true
+    },
+    {
+      "id": "1.1.4",
+      "name": "RFC 7807 Error Handling Handler",
+      "duration_days": 2.0,
+      "effort_hours": 16.0,
+      "predecessors": [
+        {
+          "predecessor_id": "1.1.1",
+          "type": "FS",
+          "lag_days": 0.0
+        }
+      ],
+      "early_start": 4.0,
+      "early_finish": 6.0,
+      "late_start": 6.0,
+      "late_finish": 8.0,
+      "total_float": 2.0,
+      "on_critical_path": false
+    },
+    {
+      "id": "1.1.5",
+      "name": "OpenAPI 3 Specification Skeleton",
+      "duration_days": 2.0,
+      "effort_hours": 16.0,
+      "predecessors": [
+        {
+          "predecessor_id": "1.1.1",
+          "type": "FS",
+          "lag_days": 0.0
+        }
+      ],
+      "early_start": 4.0,
+      "early_finish": 6.0,
+      "late_start": 6.0,
+      "late_finish": 8.0,
+      "total_float": 2.0,
+      "on_critical_path": false
+    },
+    {
+      "id": "1.2.1",
+      "name": "Location Tree CRUD & Capacity Engine",
+      "duration_days": 4.0,
+      "effort_hours": 32.0,
+      "predecessors": [
+        {
+          "predecessor_id": "1.1.2",
+          "type": "FS",
+          "lag_days": 0.0
+        },
+        {
+          "predecessor_id": "1.1.3",
+          "type": "FS",
+          "lag_days": 0.0
+        }
+      ],
+      "early_start": 7.0,
+      "early_finish": 11.0,
+      "late_start": 7.0,
+      "late_finish": 11.0,
+      "total_float": 0.0,
+      "on_critical_path": true
+    },
+    {
+      "id": "1.2.2",
+      "name": "Non-Cyclic Relocation Validator",
+      "duration_days": 3.0,
+      "effort_hours": 24.0,
+      "predecessors": [
+        {
+          "predecessor_id": "1.2.1",
+          "type": "FS",
+          "lag_days": 0.0
+        }
+      ],
+      "early_start": 11.0,
+      "early_finish": 14.0,
+      "late_start": 11.0,
+      "late_finish": 14.0,
+      "total_float": 0.0,
+      "on_critical_path": true
+    },
+    {
+      "id": "1.2.3",
+      "name": "Container SSCC Tracking & Nesting",
+      "duration_days": 4.0,
+      "effort_hours": 32.0,
+      "predecessors": [
+        {
+          "predecessor_id": "1.2.1",
+          "type": "FS",
+          "lag_days": 0.0
+        }
+      ],
+      "early_start": 11.0,
+      "early_finish": 15.0,
+      "late_start": 11.0,
+      "late_finish": 15.0,
+      "total_float": 0.0,
+      "on_critical_path": true
+    },
+    {
+      "id": "1.3.1",
+      "name": "SKU Tracking & Status Engine",
+      "duration_days": 4.0,
+      "effort_hours": 32.0,
+      "predecessors": [
+        {
+          "predecessor_id": "1.2.3",
+          "type": "FS",
+          "lag_days": 0.0
+        }
+      ],
+      "early_start": 15.0,
+      "early_finish": 19.0,
+      "late_start": 15.0,
+      "late_finish": 19.0,
+      "total_float": 0.0,
+      "on_critical_path": true
+    },
+    {
+      "id": "1.3.2",
+      "name": "Atomic Stock Movements & Reason Codes",
+      "duration_days": 5.0,
+      "effort_hours": 36.0,
+      "predecessors": [
+        {
+          "predecessor_id": "1.3.1",
+          "type": "FS",
+          "lag_days": 0.0
+        }
+      ],
+      "early_start": 19.0,
+      "early_finish": 24.0,
+      "late_start": 19.0,
+      "late_finish": 24.0,
+      "total_float": 0.0,
+      "on_critical_path": true
+    },
+    {
+      "id": "1.3.3",
+      "name": "Split, Merge, Group, and Ungroup Operations",
+      "duration_days": 4.0,
+      "effort_hours": 32.0,
+      "predecessors": [
+        {
+          "predecessor_id": "1.3.2",
+          "type": "FS",
+          "lag_days": 0.0
+        }
+      ],
+      "early_start": 24.0,
+      "early_finish": 28.0,
+      "late_start": 24.0,
+      "late_finish": 28.0,
+      "total_float": 0.0,
+      "on_critical_path": true
+    },
+    {
+      "id": "1.3.4",
+      "name": "Immutable Audit Trail Logger",
+      "duration_days": 3.0,
+      "effort_hours": 24.0,
+      "predecessors": [
+        {
+          "predecessor_id": "1.3.3",
+          "type": "FS",
+          "lag_days": 0.0
+        }
+      ],
+      "early_start": 28.0,
+      "early_finish": 31.0,
+      "late_start": 28.0,
+      "late_finish": 31.0,
+      "total_float": 0.0,
+      "on_critical_path": true
+    },
+    {
+      "id": "1.4.1",
+      "name": "Performance Stress Testing & Optimization",
+      "duration_days": 4.0,
+      "effort_hours": 32.0,
+      "predecessors": [
+        {
+          "predecessor_id": "1.3.4",
+          "type": "FS",
+          "lag_days": 0.0
+        }
+      ],
+      "early_start": 31.0,
+      "early_finish": 35.0,
+      "late_start": 31.0,
+      "late_finish": 35.0,
+      "total_float": 0.0,
+      "on_critical_path": true
+    },
+    {
+      "id": "1.4.2",
+      "name": "Multi-Language Message Bundles (EN/ES/CA)",
+      "duration_days": 2.0,
+      "effort_hours": 16.0,
+      "predecessors": [
+        {
+          "predecessor_id": "1.1.4",
+          "type": "FS",
+          "lag_days": 0.0
+        }
+      ],
+      "early_start": 6.0,
+      "early_finish": 8.0,
+      "late_start": 33.0,
+      "late_finish": 35.0,
+      "total_float": 27.0,
+      "on_critical_path": false
+    },
+    {
+      "id": "1.4.3",
+      "name": "Docker Containerization & CI/CD Pipeline",
+      "duration_days": 3.0,
+      "effort_hours": 24.0,
+      "predecessors": [
+        {
+          "predecessor_id": "1.4.1",
+          "type": "FS",
+          "lag_days": 0.0
+        },
+        {
+          "predecessor_id": "1.4.2",
+          "type": "FS",
+          "lag_days": 0.0
+        }
+      ],
+      "early_start": 35.0,
+      "early_finish": 38.0,
+      "late_start": 35.0,
+      "late_finish": 38.0,
+      "total_float": 0.0,
+      "on_critical_path": true
+    },
+    {
+      "id": "1.4.4",
+      "name": "Test Coverage Verification (>=80%)",
+      "duration_days": 2.0,
+      "effort_hours": 16.0,
+      "predecessors": [
+        {
+          "predecessor_id": "1.4.3",
+          "type": "FS",
+          "lag_days": 0.0
+        }
+      ],
+      "early_start": 38.0,
+      "early_finish": 40.0,
+      "late_start": 38.0,
+      "late_finish": 40.0,
+      "total_float": 0.0,
+      "on_critical_path": true
+    }
+  ],
+  "critical_path": [
+    "1.1.1",
+    "1.1.2",
+    "1.2.1",
+    "1.2.2",
+    "1.2.3",
+    "1.3.1",
+    "1.3.2",
+    "1.3.3",
+    "1.3.4",
+    "1.4.1",
+    "1.4.3",
+    "1.4.4"
+  ],
+  "project_duration_days": 40.0
 }
