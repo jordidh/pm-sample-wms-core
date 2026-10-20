@@ -3,12 +3,12 @@
 ## Document Control
 - **Project Name:** Warehouse Inventory & Storage Management REST API (WMS Core)
 - **Current Version:** 1.0
-- **Date:** 2026-10-17
+- **Date:** 2026-10-20
 
 ## Changelog
 | Version | Date | Change Description |
-|---|---|---||
-| 1.0 | 2026-10-17 | Initial version |
+|---|---|---|
+| 1.0 | 2026-10-20 | Initial version. Draft created at project inception from the Project Brief, and aligned with the existing approved 1.0 Project Charter dated 2026-10-17 (no strategic objectives renegotiated). |
 
 ## 1. Purpose and Objectives
 To build a robust, scalable, and secure backend RESTful API that serves as the core engine for warehouse storage, container tracking, and stock inventory management, ensuring 100% auditability and transactional integrity.

@@ -1,2 +1,4 @@
 period,date,cumulative_pv,cumulative_ev,cumulative_ac
-Period 1,2026-10-17,160000.0,0.0,0.0
+Day 0 (Project start),2026-10-17,0.0,0.0,0.0
+Day 2,2026-10-19,32000.0,0.0,0.0
+Day 3,2026-10-20,160000.0,0.0,0.0

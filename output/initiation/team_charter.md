@@ -3,12 +3,12 @@
 ## Document Control
 - **Project Name:** Warehouse Inventory & Storage Management REST API (WMS Core)
 - **Current Version:** 1.0
-- **Date:** 2026-10-17
+- **Date:** 2026-10-20
 
 ## Changelog
 | Version | Date | Change Description |
-|---|---|---||
-| 1.0 | 2026-10-17 | Initial version |
+|---|---|---|
+| 1.0 | 2026-10-20 | Initial version. Team charter established at project inception, aligned with the approved Business Case and Project Charter (v1.0, 2026-10-17). No strategic objectives renegotiated. |
 
 ## 1. Team Values
 - **Technical Excellence:** Writing clean, maintainable, well-tested code that respects domain constraints and transactional integrity.
@@ -51,3 +51,7 @@
 
 ## 8. Charter Review
 - This charter will be reviewed at the end of each milestone during retrospectives to ensure alignment and adapt to team needs.
+
+**Assumptions and Gaps:**
+- Team size, named members, and the Project Manager's identity are not provided in the source materials.
+- Tooling choices (Slack/Teams, Jira, GitHub) and response-time expectations are carried over as stated working assumptions and should be confirmed by the team.

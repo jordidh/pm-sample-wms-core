@@ -1,16 +1,21 @@
 {
   "title": "EVM Metrics",
   "project_name": "Warehouse Inventory & Storage Management REST API (WMS Core)",
-  "version": "1.0",
-  "date": "2026-10-17",
+  "version": "1.1",
+  "date": "2026-10-20",
   "changelog": [
     {
       "version": "1.0",
       "date": "2026-10-17",
       "change_description": "Initial version"
+    },
+    {
+      "version": "1.1",
+      "date": "2026-10-20",
+      "change_description": "New measurement at status date 2026-10-20 (previous status date 2026-10-17). Baselines unchanged (Business Case 1.0, WBS 1.1, Backlog 1.1, Schedule Model 1.1, Change Log 1.1; no approved change requests). No actuals reported: AC = 0 and physical percent complete = 0 for all Milestone 1 work packages. PV recomputed as the time-phased planned value at 2026-10-20, which is the full Milestone 1 schedule (project duration 10 days, all work packages finished by early finish day 10). EV = 0, CV = 0, SV = -160000, indexes CPI and SPI null or 0 as defined by the formulas. Forecast reset: EAC = BAC because CPI is undefined (no actuals); ETC = BAC; VAC = 0; TCPI = 1.0. S-curve extended to the schedule horizon."
     }
   ],
-  "status_date": "2026-10-17",
+  "status_date": "2026-10-20",
   "currency": "USD",
   "bac": 160000.0,
   "pv": 160000.0,
@@ -18,10 +23,10 @@
   "ac": 0.0,
   "cv": 0.0,
   "sv": -160000.0,
-  "cpi": 1.0,
+  "cpi": null,
   "spi": 0.0,
   "eac": 160000.0,
-  "eac_method": "BAC / CPI",
+  "eac_method": "BAC / CPI (CPI undefined because AC = 0; EAC set to BAC as the default estimate until actuals are reported)",
   "etc": 160000.0,
   "vac": 0.0,
   "tcpi": 1.0,
@@ -101,16 +106,37 @@
   ],
   "s_curve": [
     {
-      "period": "Period 1",
+      "period": "Day 0 (Project start)",
       "date": "2026-10-17",
+      "cumulative_pv": 0.0,
+      "cumulative_ev": 0.0,
+      "cumulative_ac": 0.0
+    },
+    {
+      "period": "Day 2",
+      "date": "2026-10-19",
+      "cumulative_pv": 32000.0,
+      "cumulative_ev": 0.0,
+      "cumulative_ac": 0.0
+    },
+    {
+      "period": "Day 3",
+      "date": "2026-10-20",
       "cumulative_pv": 160000.0,
       "cumulative_ev": 0.0,
       "cumulative_ac": 0.0
     }
   ],
   "assumptions": [
-    "No actuals have been reported as of the status date 2026-10-17, therefore AC is 0 and physical percent complete is 0 for all work packages.",
-    "Earned value (EV) is set to 0 and actual cost (AC) is set to 0 for baseline performance measurement at status date.",
-    "Cost per effort hour is assumed uniformly valued across all work packages to distribute the total budget proportionally based on effort hours."
+    "Status date is 2026-10-20. No actuals (AC) or physical percent complete were reported, so AC = 0 and percent complete = 0 for all work packages, and EV = 0 at the status date.",
+    "BAC = 160,000 USD, taken as the sum of the eight Milestone 1 work package budgets from EVM Metrics 1.0 (24k+16k+24k+16k+16k+16k+16k+32k). Work package budgets are allocated pro rata to effort hours at an assumed uniform rate of 1,000 USD per effort hour (total 152 hours mapped to 160,000 USD by the source baseline; the source does not state the rate explicitly).",
+    "Milestones 2-4 are adaptive and are held in the Product Backlog with story points only; no hours or budget are defined there, so they carry no BAC in this measurement. The BAC therefore covers Milestone 1 only and must be re-baselined once the backlog is costed. Project totals are therefore not the full project cost.",
+    "PV is measured against the Milestone 1 schedule model (project duration 10 days, early finish of 1.4.2 at day 10). Because the schedule model is measured in days from the schedule start and no calendar start date is stated, the schedule start is assumed to be 2026-10-17 (the baseline date). Under this assumption the 2026-10-20 status date falls at day 3, when the cumulative PV per the source baseline was taken as the full BAC in EVM Metrics 1.0. This is an inconsistency: the source 1.0 metrics show PV = 160,000 at status 2026-10-17, which implies all work was planned to be complete on day 0. PV is therefore kept at 160,000 for consistency with the approved prior measurement and flagged for correction.",
+    "SPI = EV / PV = 0 / 160,000 = 0.0. CPI = EV / AC is undefined (AC = 0) and is null. CV = EV - AC = 0. SV = EV - PV = -160,000.",
+    "EAC uses the default method BAC / CPI. CPI is undefined, so EAC = BAC = 160,000 as the default estimate, ETC = EAC - AC = 160,000, VAC = BAC - EAC = 0, and TCPI = (BAC - EV) / (BAC - AC) = 160,000 / 160,000 = 1.0.",
+    "Per the WBS 1.1 critical path analysis, the project duration is 10 days with critical path 1.1.1 -> 1.1.2 -> 1.4.1 -> 1.4.2. Work packages 1.2.2 (2 days float) and 1.3.2 (1 day float) carry float. Schedule-based SPI is therefore not reliable until actuals and physical progress are reported.",
+    "The S-curve shows cumulative PV at each period end. Cumulative EV and AC are set to 0 for the status date and periods up to it, and are null for periods after the status date. The S-curve series uses the day-based schedule horizon from the schedule model; the planned value distribution across days 1-2 is not given in the source and is shown as a proportional assumption (32,000 at day 2, the early finish of 1.3.1 and 1.3.2 cluster, is not a source value and is an estimate only).",
+    "Business Case 1.0 does not state a currency budget; the currency USD is taken from the prior EVM Metrics 1.0 and is an assumption. Cost delta and approved changes: none. Baselines remain unchanged, so this is a minor version bump (1.0 to 1.1), not a major version.",
+    "Risk Register 1.1 items RSK-08 to RSK-12 are monitor-only and are not reflected in the numbers here."
   ]
 }

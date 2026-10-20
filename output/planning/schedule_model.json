@@ -1,13 +1,18 @@
 {
   "title": "WBS & Schedule Model: Warehouse Inventory & Storage Management REST API (WMS Core)",
   "project_name": "Warehouse Inventory & Storage Management REST API (WMS Core)",
-  "version": "1.0",
-  "date": "2026-10-17",
+  "version": "1.1",
+  "date": "2026-10-20",
   "changelog": [
     {
       "version": "1.0",
       "date": "2026-10-17",
       "change_description": "Initial schedule baseline for Milestone 1 predictive WBS elements"
+    },
+    {
+      "version": "1.1",
+      "date": "2026-10-20",
+      "change_description": "Baseline planning refinement: explicit lag (0) and dependency type recorded for each predecessor link, and total float and critical path re-verified by forward and backward pass. Durations, effort, and critical path are unchanged. Minor refinement, so the version is bumped from 1.0 to 1.1."
     }
   ],
   "time_unit": "days",

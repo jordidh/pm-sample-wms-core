@@ -3,12 +3,12 @@
 ## Document Control
 - **Project Name:** Warehouse Inventory & Storage Management REST API (WMS Core)
 - **Current Version:** 1.0
-- **Date:** 2026-10-17
+- **Date:** 2026-10-20
 
 ## Changelog
 | Version | Date | Change Description |
-|---|---|---||
-| 1.0 | 2026-10-17 | Initial version | 
+|---|---|---|
+| 1.0 | 2026-10-20 | Initial version. Draft created at project inception from the Project Brief, and aligned with the existing approved 1.0 Business Case dated 2026-10-17 (no strategic objectives renegotiated). |
 
 ## 1. Problem / Opportunity Statement
 Modern warehousing operations suffer from data discrepancies, lack of granular traceability, and slow inventory visibility when relying on legacy or monolithic systems. The opportunity is to build a robust, scalable, and secure backend RESTful API (WMS Core) that manages physical layout hierarchically, tracks nested containers (pallets, boxes, totes), records granular stock allocations with batch and expiry tracking, and guarantees 100% auditability through movement logs and transactional integrity.
@@ -26,6 +26,7 @@ Modern warehousing operations suffer from data discrepancies, lack of granular t
 ## 4. Costs and ROI Estimate
 - **Development Cost:** Standard agile team development over 4 distinct milestones covering architecture, location/container engines, stock management, and performance/production readiness.
 - **ROI Estimate:** Reduced discrepancy resolution time, lower inventory write-offs due to accurate batch/expiry tracking, and accelerated onboarding of external systems via standardized APIs.
+- **Assumptions and Gaps:** No headcount, currency budget, or quantified baseline (current discrepancy rate, write-off value, resolution time) is provided in the source materials. Quantified ROI figures are therefore not stated and must be established during Milestone 1 before funding is committed.
 
 ## 5. Options Considered
 - **Option 1: Build Custom Monolithic Application:** Rejected due to coupling, lower maintainability, and lack of reusable API components.
@@ -33,15 +34,20 @@ Modern warehousing operations suffer from data discrepancies, lack of granular t
 - **Option 3: Build Core WMS REST API (Recommended):** Selected because it provides modular, scalable, secure, and well-documented backend services tailored to exact inventory constraints.
 
 ## 6. Risks and Assumptions
-- **Risks:** Concurrency conflicts under high-frequency updates; performance degradation with large-scale queries over 100k records.
-- **Assumptions:** External clients will correctly handle RFC 7807 error responses and use ETag/version headers for optimistic locking; product master data management is handled externally.
+- **Risks:**
+  - Concurrency conflicts under high-frequency updates.
+  - Performance degradation with large-scale queries over 100k records.
+- **Assumptions:**
+  - External clients will correctly handle RFC 7807 error responses and use ETag/version headers for optimistic locking.
+  - Product master data management is handled externally; SKUs are validated before submission.
+  - External systems support HTTP status standards and ETag concurrency headers.
 
 ## 7. Recommended Development Approach & Justification
 - **Approach:** Hybrid / Iterative-Incremental Approach.
 - **Justification:** Architectural foundation and data schema require a structured, predictive baseline (Milestone 1), while functional modules (locations, containers, stock operations) benefit from adaptive, milestone-driven iterations to validate business rules and performance constraints incrementally.
 
 ## 8. Product Life Cycle Definition
-- **Phases:** 
+- **Phases:**
   1. Inception & Architectural Foundation (Milestone 1)
   2. Core Engine Development (Milestones 2 & 3)
   3. Production Readiness & Performance Optimization (Milestone 4)
