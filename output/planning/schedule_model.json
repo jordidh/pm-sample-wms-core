@@ -1,167 +1,17 @@
 {
-  "title": "WBS & Schedule Model: Warehouse Inventory & Storage Management REST API (WMS Core)",
+  "title": "Schedule Model: Warehouse Inventory & Storage Management REST API (WMS Core) - Predictive Components",
   "project_name": "Warehouse Inventory & Storage Management REST API (WMS Core)",
-  "version": "1.1",
+  "version": "1.0",
   "date": "2026-10-20",
   "changelog": [
     {
       "version": "1.0",
-      "date": "2026-10-17",
-      "change_description": "Initial schedule baseline for Milestone 1 predictive WBS elements"
-    },
-    {
-      "version": "1.1",
       "date": "2026-10-20",
-      "change_description": "Baseline planning refinement: explicit lag (0) and dependency type recorded for each predecessor link, and total float and critical path re-verified by forward and backward pass. Durations, effort, and critical path are unchanged. Minor refinement, so the version is bumped from 1.0 to 1.1."
+      "change_description": "Initial version"
     }
   ],
   "time_unit": "days",
-  "activities": [
-    {
-      "id": "1.1.1",
-      "name": "Core PostgreSQL Schema Design",
-      "duration_days": 3.0,
-      "effort_hours": 24.0,
-      "predecessors": [],
-      "early_start": 0.0,
-      "early_finish": 3.0,
-      "late_start": 0.0,
-      "late_finish": 3.0,
-      "total_float": 0.0,
-      "on_critical_path": true
-    },
-    {
-      "id": "1.1.2",
-      "name": "Migration Scripts & Rollback Mechanisms",
-      "duration_days": 2.0,
-      "effort_hours": 16.0,
-      "predecessors": [
-        {
-          "predecessor_id": "1.1.1",
-          "type": "FS",
-          "lag_days": 0.0
-        }
-      ],
-      "early_start": 3.0,
-      "early_finish": 5.0,
-      "late_start": 3.0,
-      "late_finish": 5.0,
-      "total_float": 0.0,
-      "on_critical_path": true
-    },
-    {
-      "id": "1.2.1",
-      "name": "JWT/OAuth2 RBAC Token Validation",
-      "duration_days": 3.0,
-      "effort_hours": 24.0,
-      "predecessors": [],
-      "early_start": 0.0,
-      "early_finish": 3.0,
-      "late_start": 0.0,
-      "late_finish": 3.0,
-      "total_float": 0.0,
-      "on_critical_path": true
-    },
-    {
-      "id": "1.2.2",
-      "name": "Role-Based Permission Enforcement Decorators",
-      "duration_days": 2.0,
-      "effort_hours": 16.0,
-      "predecessors": [
-        {
-          "predecessor_id": "1.2.1",
-          "type": "FS",
-          "lag_days": 0.0
-        }
-      ],
-      "early_start": 3.0,
-      "early_finish": 5.0,
-      "late_start": 5.0,
-      "late_finish": 7.0,
-      "total_float": 2.0,
-      "on_critical_path": false
-    },
-    {
-      "id": "1.3.1",
-      "name": "RFC 7807 problem+json Exception Handlers",
-      "duration_days": 2.0,
-      "effort_hours": 16.0,
-      "predecessors": [],
-      "early_start": 0.0,
-      "early_finish": 2.0,
-      "late_start": 0.0,
-      "late_finish": 2.0,
-      "total_float": 0.0,
-      "on_critical_path": true
-    },
-    {
-      "id": "1.3.2",
-      "name": "OpenAPI Documentation Skeleton Setup",
-      "duration_days": 2.0,
-      "effort_hours": 16.0,
-      "predecessors": [
-        {
-          "predecessor_id": "1.3.1",
-          "type": "FS",
-          "lag_days": 0.0
-        }
-      ],
-      "early_start": 2.0,
-      "early_finish": 4.0,
-      "late_start": 3.0,
-      "late_finish": 5.0,
-      "total_float": 1.0,
-      "on_critical_path": false
-    },
-    {
-      "id": "1.4.1",
-      "name": "Dockerfile & Containerization Setup",
-      "duration_days": 2.0,
-      "effort_hours": 16.0,
-      "predecessors": [
-        {
-          "predecessor_id": "1.1.2",
-          "type": "FS",
-          "lag_days": 0.0
-        },
-        {
-          "predecessor_id": "1.3.2",
-          "type": "FS",
-          "lag_days": 0.0
-        }
-      ],
-      "early_start": 5.0,
-      "early_finish": 7.0,
-      "late_start": 5.0,
-      "late_finish": 7.0,
-      "total_float": 0.0,
-      "on_critical_path": true
-    },
-    {
-      "id": "1.4.2",
-      "name": "Automated CI Pipeline with Test Coverage Gates",
-      "duration_days": 3.0,
-      "effort_hours": 24.0,
-      "predecessors": [
-        {
-          "predecessor_id": "1.4.1",
-          "type": "FS",
-          "lag_days": 0.0
-        }
-      ],
-      "early_start": 7.0,
-      "early_finish": 10.0,
-      "late_start": 7.0,
-      "late_finish": 10.0,
-      "total_float": 0.0,
-      "on_critical_path": true
-    }
-  ],
-  "critical_path": [
-    "1.1.1",
-    "1.1.2",
-    "1.4.1",
-    "1.4.2"
-  ],
-  "project_duration_days": 10.0
+  "activities": [],
+  "critical_path": [],
+  "project_duration_days": 0.0
 }

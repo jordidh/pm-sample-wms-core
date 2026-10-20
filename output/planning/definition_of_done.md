@@ -1,95 +1,255 @@
-# Definition of Done (DoD): Warehouse Inventory & Storage Management REST API (WMS Core)
+# Definition of Done: Warehouse Inventory & Storage Management REST API (WMS Core)
 
-## Document Control
-- **Project Name:** Warehouse Inventory & Storage Management REST API (WMS Core)
-- **Current Version:** 2.0
-- **Date:** 2026-10-20
+| Field | Value |
+| --- | --- |
+| Document | Definition of Done |
+| Project Name | Warehouse Inventory & Storage Management REST API (WMS Core) |
+| Current Version | 1.0 |
+| Date | 2026-10-20 |
 
 ## Changelog
+
 | Version | Date | Change Description |
-|---|---|---|
-| 1.0 | 2026-10-17 | Initial Definition of Done baseline covering story, feature, iteration, and release levels |
-| 2.0 | 2026-10-20 | Baseline planning re-issue. Retained the four DoD levels from v1.0 and added the explicit criteria required for code quality, testing, documentation, review, security, deployment, and acceptance sign-off at each level. Added work package (WBS) level criteria for Milestone 1, a Definition of Ready reference, and the review and evolution process. Version bumped from 1.0 to 2.0 because the quality gates now apply to the Milestone 1 work packages and to security and release criteria that were not previously defined. |
+| --- | --- | --- |
+| 1.0 | 2026-10-20 | Initial version |
 
-## Assumptions
-- Quality thresholds are taken from the Team Charter (>= 80% coverage, peer review before merge) and the Project Charter (p95 targets, RFC 7807, ACID, optimistic locking).
-- Numeric thresholds not stated in the source (for example, the vulnerability severity threshold beyond "high or critical", and the container health check startup window) are recorded as <UNKNOWN> and listed in Open Items.
-- Tooling (GitHub, Jira, CI platform, linters, scanners) is carried over from the Team Charter as working assumptions and is to be confirmed.
-- Milestone 1 work packages (WBS 1.1.1 to 1.4.2) are predictive. Milestones 2 to 4 are backlog items (US-101 to US-304) and are governed by the story and feature levels.
-- Requirement IDs referenced below are from Requirements Specification v2.0.
+## 0. Purpose and Basis
 
-## 0. Definition of Ready (Entry Criteria)
-A story or work package may start only when:
-- Acceptance criteria are written in Given/When/Then form or as a testable statement, and each references a requirement ID (for example, REQ-001).
-- Predecessors listed in the WBS dictionary or the Product Backlog are complete (FS dependencies) or the SS dependency is satisfied.
-- Owner role is assigned (WBS Owner Role field, or Backlog team assignment).
-- Open gaps that affect the item are either resolved or explicitly accepted by the Project Manager.
+This Definition of Done (DoD) defines when a deliverable is complete and fit for purpose at four levels: story/work package, feature, iteration/increment, and release. It applies the Team Charter Section 8.2 criteria and the Requirements Specification v1.0 (REQ-001 to REQ-038, NFR-*).
 
-## 1. Story / Work Package Level
-Applies to each user story (US-xxx) and each WBS work package (1.x.x).
+**Assumptions:**
+* Team Charter Section 8.2 is the baseline DoD. This document extends it with levels, measurable thresholds, and sign-off roles.
+* Team composition and role names are <UNKNOWN>; roles are referenced as in the WBS Dictionary (Backend Developer, QA Engineer, DevOps Engineer, Security Analyst, Performance Engineer, Localization Reviewer, Project Manager, Project Sponsor, Business Owner, Technical Lead).
+* The Security & Compliance Owner is named in the Team Charter but has no name (<UNKNOWN>).
+* Tooling (CI product, coverage tool, test framework) is not specified and is assumed to be selected in WBS 2.4.4.
 
-- **Code Quality & Style:** Code follows the project architecture and passes the static analysis linters with zero warnings.
-- **Peer Review:** Code is peer-reviewed and approved by at least one other engineer through a Pull Request before merge (Team Charter Section 2).
-- **Unit Testing:** Unit tests cover normal, boundary, and error cases for each acceptance criterion, and contribute to the >= 80% coverage threshold (REQ-015).
-- **Traceability:** Each change references the story or work package code and the requirement ID(s) it satisfies, and the Requirements Traceability Matrix is updated where a new requirement is introduced.
-- **Local Verification:** All new and existing unit tests pass in the local development environment.
-- **Security Hygiene:** No secrets, credentials, or tokens are committed to the repository. Authentication and authorization paths are covered by tests for REQ-011 and REQ-024 where the story touches them.
-- **Work Package Specific Outputs:**
-  - WBS 1.1.1: ERD Diagram and migration files reviewed by the Database Architect; foreign keys and indexes exist for location, container, and stock entities (REQ-019, REQ-020).
-  - WBS 1.1.2: Each migration has a verified rollback that restores the prior schema (REQ-027).
-  - WBS 1.2.1: Token validation rejects missing, expired, and malformed tokens with HTTP 401 (REQ-024).
-  - WBS 1.2.2: Role checks for `admin`, `supervisor`, and `operator` return HTTP 403 for unauthorized access (REQ-011).
-  - WBS 1.3.1: Every 4xx and 5xx response uses `application/problem+json` with no stack trace or database schema text (REQ-012).
-  - WBS 1.3.2: OpenAPI document is generated and lists the skeleton endpoints (REQ-026).
-  - WBS 1.4.1: Multi-stage Dockerfile and docker-compose file build successfully (REQ-016).
-  - WBS 1.4.2: CI pipeline fails any build below 80% coverage (REQ-015).
+**Terms:**
+* **Story:** A user story or WBS work package with a requirement ID link.
+* **Feature:** A capability that satisfies one or more requirement groups (for example, Location Engine, Container Engine, Stock Operations, Audit Trail).
+* **Increment:** The integrated, deployable result of an iteration.
+* **Release:** The set of milestones M1–M4 plus production go-live (WBS 6.1.x).
 
-## 2. Feature Level
-Applies to each feature (for example, 1.1.1, 1.2.1, 2.1.1, 2.2.1, 3.1.1, 3.2.1) and its user stories.
+---
 
-- **Integration Testing:** Automated integration tests cover database interactions and API endpoints for each acceptance criterion of the feature's stories.
-- **Error Handling:** All error responses for the feature conform to RFC 7807 (REQ-012), and localized messages are verified for EN, ES, and CA where REQ-014 applies.
-- **API Documentation:** OpenAPI documentation is updated for new or modified endpoint schemas, parameters, error responses, and response headers (REQ-026).
-- **Concurrency & ACID:** Mutating operations use optimistic locking (ETag) where REQ-010 applies, and failure paths are tested to show full rollback with no partial state (REQ-009).
-- **Data Integrity:** Tests confirm no negative stock quantities (REQ-019), no orphaned containers or stock (REQ-020), and no cycles in container nesting (REQ-018), where the feature touches them.
-- **Audit Logging:** Each feature that performs an inventory movement, transfer, or adjustment writes an audit entry verified by test (REQ-008), and the audit log is verified as non-modifiable (REQ-021).
-- **Feature Acceptance:** The Product Owner or Project Manager confirms that every story in the feature meets its acceptance criteria.
+## 1. Story / Work Package Level DoD
 
-## 3. Iteration / Increment Level
-Applies to each milestone iteration (Release 1 = Milestone 2, Release 2 = Milestone 3, Release 3 = Milestone 4; Milestone 1 is the foundation increment).
+A story or work package is Done when every item below is true.
 
-- **Regression Testing:** Full automated test suite passes in the CI pipeline with no regressions.
-- **Coverage Gate:** The CI quality gate verifies total test coverage is >= 80% (REQ-015).
-- **Static and Dependency Checks:** Static analysis reports zero warnings, and dependency scans run in CI with results recorded.
-- **Container Verification:** Application builds into a multi-stage Docker container, and the health check endpoint returns healthy within the startup window of <UNKNOWN> seconds (REQ-016, REQ-025).
-- **Health Check:** The health endpoint returns HTTP 200 when the database is reachable and HTTP 503 when it is not (REQ-025).
-- **Documentation Currency:** OpenAPI specification and the Requirements Traceability Matrix match the delivered endpoints and requirements (REQ-026).
-- **Stakeholder Demo:** Completed feature increments are demonstrated at the Milestone Review, with the Sponsor or delegate present for milestone sign-off.
-- **Retrospective:** A retrospective is held at the end of each milestone, and the DoD is reviewed (Section 5).
+### 1.1 Code Quality
+* [ ] Code is implemented for the scope of the linked requirement IDs only; no unlinked functionality is added.
+* [ ] Code is peer reviewed (at least one reviewer) and merged via pull request.
+* [ ] Lint and static analysis pass with zero new blocking findings.
+* [ ] No secrets, stack traces, database schema details, or library versions appear in responses, logs visible externally, or commits (NFR-S-03, NFR-S-06).
+* [ ] Trunk-based branch is short-lived and merged; no long-running feature branches are left open.
 
-## 4. Release Level
-Applies to each release that delivers a milestone to production-readiness (Release 3 / Milestone 4 is the production release gate).
+### 1.2 Testing
+* [ ] Automated tests exist for every acceptance criterion of the linked requirement (Given/When/Then cases in the Requirements Specification).
+* [ ] Negative cases are tested: invalid input, unauthorized role, not-found, and rule violation (for example `STOCK_INSUFFICIENT_QUANTITY`, `LOCATION_CAPACITY_EXCEEDED`).
+* [ ] For any stock operation (split, merge, group, ungroup, move, adjust, write-off): concurrency and transactional rollback tests exist (REQ-019, REQ-021, REQ-022, NFR-R-03).
+* [ ] For any stock mutation: the movement log entry is asserted (REQ-020, NFR-R-02).
+* [ ] For any endpoint: RBAC allow and deny paths are tested for each of `admin`, `supervisor`, `operator` (REQ-023, NFR-S-02).
+* [ ] For any error path: response is RFC 7807 `application/problem+json` with a catalog `code` (REQ-024, REQ-029).
+* [ ] All tests pass in CI; no test is skipped without a linked defect and an expiry date.
+* [ ] Line coverage of changed code is at or above 80%, and the overall suite remains at or above 80% (REQ-027, NFR-M-01).
 
-- **Performance Benchmarking:** Load tests on a database seeded with 100,000 records confirm p95 latency below 300 ms for single-resource operations (REQ-023) and below 1 s for list queries (REQ-013).
-- **Concurrency Validation:** Concurrent update tests confirm that stale ETags return HTTP 409 Conflict (REQ-010).
-- **Localization Validation:** Error messages are verified in EN, ES, and CA, with EN fallback for unsupported locales (REQ-014, REQ-030). Because REQ-014 is Could Have, the Sponsor must confirm whether this is a release blocker.
-- **Audit & Security Scan:** Security scan and dependency audit report zero high or critical severity findings. The formal vulnerability threshold beyond high and critical is <UNKNOWN>.
-- **Transport Security:** Verification confirms that TLS is enforced for all API traffic (REQ-029).
-- **Audit Retention:** Retention configuration for audit entries is verified against the approved period (REQ-028), which is <UNKNOWN> until confirmed.
-- **Deployment Readiness:** Production deployment scripts, database migration rollback procedures (REQ-027), and docker-compose orchestration are verified in a staging environment.
-- **Operational Handover:** Runbook covering deployment, health check, rollback, and audit log access is delivered and reviewed by the operations owner.
-- **Open Items Closed:** All open gaps in the Requirements Specification v2.0 that affect the release scope are resolved or formally accepted by the Sponsor.
-- **Executive Sign-off:** Formal approval is granted by the Project Sponsor for milestone and release sign-off, as stated in the Project Charter Section 10.
+### 1.3 Data and Persistence
+* [ ] Schema or migration change is versioned, applies from empty and from the previous version, and is tested in CI (NFR-R-04).
+* [ ] Optimistic locking (ETag or version) is enforced on mutations and tested with a stale-ETag case (REQ-022).
+* [ ] Zero negative-inventory, over-capacity, or orphaned-container records are produced by the story's tests (NFR-R-01).
 
-## 5. Review and Evolution of the Definition of Done
-- **Retrospective Review:** The DoD is reviewed at each post-milestone retrospective by the engineering team and the Project Manager.
-- **Change Control:** Changes to quality gates or sign-off criteria are proposed through a lightweight ADR and approved by consensus of the engineering team. Changes that alter the sponsor's sign-off authority require Sponsor approval.
-- **Versioning:** Each change is recorded in the Changelog with a version bump per the rules applied to this document.
-- **Continuous Improvement:** Thresholds marked <UNKNOWN> are confirmed and recorded in the next version.
+### 1.4 Documentation
+* [ ] OpenAPI 3 specification updated for the changed endpoints and error responses (REQ-028, NFR-U-02).
+* [ ] Error code catalog updated if a new code is added; Technical Lead approval and changelog entry recorded (REQ-029).
+* [ ] Changelog of the affected document updated with version and date.
+* [ ] Decision log entry recorded for any business rule interpretation (NFR-M-04).
 
-## 6. Open Items
-- Vulnerability severity threshold beyond "high or critical": <UNKNOWN>.
-- Container health check startup window: <UNKNOWN>.
-- Audit retention period: <UNKNOWN>.
-- Tooling confirmation (GitHub, Jira, CI platform, linters, security scanners): pending team confirmation.
-- Release gating status of Could Have items (REQ-014, REQ-030): pending Sponsor decision.
+### 1.5 Localization (where user-facing messages change)
+* [ ] EN, ES, and CA message keys added for each new or changed error or user-facing message (REQ-032 to REQ-036).
+* [ ] Every new code has the same `code` value in all three languages (REQ-037).
+
+### 1.6 Observability
+* [ ] Structured JSON log entries include `trace_id` for the new code path (REQ-025, NFR-M-03).
+* [ ] Health check behaviour is unchanged or updated and tested for the affected component (NFR-D-02).
+
+### 1.7 Acceptance
+* [ ] Story demonstrated to the Product Owner/Business Owner in the iteration review, or recorded as not demonstrable with reason.
+* [ ] Acceptance criteria verified and marked Accepted by the Business Owner (for business rules) or QA Engineer (for technical criteria).
+
+---
+
+## 2. Feature Level DoD
+
+A feature (for example, Location Engine, Container Engine, Stock Allocation, Stock Operations, Audit Trail, Security and RBAC, Error Contract and Localization, Performance) is Done when all story-level DoD items are met for all its stories and the following are true.
+
+### 2.1 Requirement Coverage
+* [ ] Every requirement in the feature's group is implemented and has acceptance test evidence (for example, Location group REQ-001 to REQ-005; Container group REQ-006 to REQ-010; Inventory core REQ-011 to REQ-019; Audit REQ-020).
+* [ ] Traceability matrix (Requirements Specification Section 3) is updated: each requirement maps to its WBS package(s) and user story IDs, and no entry remains `<UNKNOWN>` for the feature.
+
+### 2.2 Verification Evidence
+* [ ] Feature-level integration tests pass against a database with migrations applied.
+* [ ] Feature-level negative and concurrency tests pass (for stock operations, split, merge, group, and ungroup are tested together, including concurrent execution).
+* [ ] Movement log completeness for the feature is verified at 100% of mutations (NFR-R-02).
+* [ ] Zero negative-inventory, over-capacity, or orphaned-container records in the feature's acceptance dataset (NFR-R-01).
+
+### 2.3 Security Review
+* [ ] Security-relevant changes in the feature (auth, RBAC, error masking, audit log) are reviewed by the Security & Compliance Owner, and findings are closed or formally accepted (TC 3.3, NFR-S-04).
+
+### 2.4 Operational Readiness
+* [ ] Feature is deployable from the CI pipeline to a test environment; deployment is verified by health checks.
+* [ ] Structured logs and `trace_id` propagation are verified for the feature's endpoints.
+
+### 2.5 Feature Demonstration
+* [ ] Feature demonstrated at the iteration review with Business Owner and Warehouse Supervisors present (TC 4).
+
+---
+
+## 3. Iteration / Increment Level DoD
+
+An iteration (two-week time box, assumed per Project Charter Section 8) is Done when all of the following are true.
+
+### 3.1 Iteration Goal and Backlog
+* [ ] Iteration goal is met or the shortfall is recorded with reason and re-planned.
+* [ ] All committed stories meet the story-level DoD, or are moved back to the backlog with a documented reason.
+* [ ] Every item in the iteration met the Definition of Ready (TC 8.1) at the start of the iteration.
+
+### 3.2 Build and Pipeline
+* [ ] The main branch builds, and the CI pipeline is green (build, lint, unit test, integration test, migration test, coverage gate at 80%) (WBS 2.4.4, 2.4.5).
+* [ ] Increment is packaged as a Docker image and deployed to the test environment (REQ-025).
+
+### 3.3 Quality Gates
+* [ ] No open defects of severity Critical or High against the increment's stories.
+* [ ] Open defects of severity Medium or Low are logged with owner and target iteration.
+* [ ] Regression suite for all previously accepted requirements passes.
+* [ ] Concurrency test suite for split, merge, group, and ungroup passes (WBS 4.4.1 at M3).
+* [ ] Overall automated coverage ≥ 80%.
+
+### 3.4 Review and Governance
+* [ ] Iteration review (demo) held; feedback recorded in the issue tracker.
+* [ ] Iteration retrospective held; 1–2 improvement actions recorded and owners assigned (TC 4, 9).
+* [ ] RAID log updated (risks, issues, assumptions), with the weekly risk review completed (TC 4).
+* [ ] Decision log updated with all decisions made in the iteration, restated from chat within 1 working day (TC 6).
+
+### 3.5 Documentation
+* [ ] Changelogs of changed documents are updated.
+* [ ] Requirements Specification traceability matrix is current.
+
+---
+
+## 4. Milestone Level DoD (Gates M1–M4)
+
+Each milestone is Done when its deliverables meet the criteria below and the gate review is recorded with a go/no-go decision by the Project Sponsor (TC 5). Milestone gate reviews are 90 minutes with the steering committee and team (TC 4).
+
+### 4.1 M1: Architectural Foundation and CI/CD
+* [ ] DB schema, transaction boundaries, isolation levels, and version/ETag columns are baselined; changes after baseline go through change control (TC 3.2, NFR-C-03).
+* [ ] Index strategy document is reviewed and covers all list and aggregate query paths (NFR-P-04).
+* [ ] JWT/OAuth2 validation is integrated with the named identity provider (A2, OI-07), and RBAC matrix is baselined (OI-01, REQ-023).
+* [ ] RFC 7807 handler and error code catalog are in place; leak-proof 5xx with `trace_id` verified (REQ-024, REQ-029, REQ-030, REQ-031).
+* [ ] OpenAPI 3 skeleton and Swagger UI are published (REQ-028).
+* [ ] Structured JSON logging and health checks (liveness, readiness) are operational (REQ-025, NFR-D-02).
+* [ ] Docker image and local compose environment build and run.
+* [ ] CI pipeline is operational with build, lint, unit test, integration test, migration test, and 80% coverage gate (REQ-027, NFR-R-04).
+* [ ] Foundation security review completed with findings closed or formally accepted (NFR-S-05, WBS 2.4.6).
+* [ ] M1 gate decision recorded (WBS 2.4.7).
+
+### 4.2 M2: Location and Container Hierarchy Engine
+* [ ] REQ-001 to REQ-010 are implemented and accepted.
+* [ ] Over-capacity and orphaned-container acceptance tests pass with zero violating records (WBS 3.3.1, 3.3.2; NFR-R-01).
+* [ ] Location and container endpoints are documented in OpenAPI and error codes are in the catalog.
+* [ ] Weight and dimension limits are confirmed by the Business Owner (OI-03).
+* [ ] M2 gate decision recorded (WBS 3.3.3).
+
+### 4.3 M3: Stock Management and Advanced Movements
+* [ ] REQ-011 to REQ-020 are implemented and accepted.
+* [ ] Concurrency tests for split, merge, and group pass with 100% of runs meeting invariants (WBS 4.4.1; NFR-R-03).
+* [ ] Movement log completeness test: 100% of mutations logged, and log immutability verified for all roles (WBS 4.4.2; NFR-R-02, NFR-C-02).
+* [ ] Functional acceptance tests for REQ-001 to REQ-020 pass (WBS 4.4.3).
+* [ ] Reason code and UoM catalogs are confirmed by the Business Owner (OI-02, OI-04).
+* [ ] M3 gate decision recorded (WBS 4.4.4).
+
+### 4.4 M4: Performance, Localization and Production Readiness
+* [ ] Performance tests at 100k records meet: single-item reads p95 < 300 ms; list and aggregate < 1 s (REQ-026, NFR-P-01, NFR-P-02); performance report published with load profile (NFR-P-03, WBS 5.1.5).
+* [ ] EN, ES, and CA message bundles are complete for every catalog code (REQ-032 to REQ-036; WBS 5.2.1, 5.2.3).
+* [ ] Professional review of ES and CA is signed off before gate approval (REQ-038, NFR-C-04).
+* [ ] RFC 7807 verification is executed across the full error code catalog (REQ-024; WBS 5.3.3).
+* [ ] Coverage is at or above 80% across the suite (REQ-027; WBS 5.3.1).
+* [ ] M4 security review completed with findings closed or formally accepted (NFR-S-05; WBS 5.3.2).
+* [ ] Docker image and Kubernetes or cloud manifests are finalized; health checks validated in the target environment (REQ-025, NFR-D-01; WBS 5.4.1, 5.4.2).
+* [ ] Final OpenAPI 3 specification published in Swagger UI (REQ-028; WBS 5.4.3).
+* [ ] Release approval gate decision recorded by the Project Sponsor (WBS 5.4.4).
+
+---
+
+## 5. Release Level DoD
+
+The release is Done (production go-live accepted) when all of the following are true.
+
+### 5.1 Requirement Acceptance
+* [ ] All in-scope requirements REQ-001 to REQ-038 are implemented and accepted (Project Charter Success Criterion 1).
+* [ ] All NFRs in the Requirements Specification are verified by their stated verification method, with evidence attached.
+* [ ] Zero negative-inventory, over-capacity, or orphaned-container records in acceptance testing (Project Charter Success Criterion 2; NFR-R-01).
+* [ ] Every stock mutation produces an immutable movement log entry, verified (Success Criterion 3; NFR-R-02).
+* [ ] Performance targets met at 100k records (Success Criterion 4).
+* [ ] Automated CI coverage ≥ 80% (Success Criterion 5).
+* [ ] OpenAPI 3 specification and Swagger UI published; RFC 7807 errors verified across the error catalog (Success Criterion 6).
+* [ ] Docker image delivered and passing health checks (Success Criterion 7).
+* [ ] EN, ES, and CA message bundles validated (Success Criterion 8).
+
+### 5.2 Security and Compliance
+* [ ] Security reviews at M1 and M4 completed before gate approval (TC 8.3).
+* [ ] RBAC verified for `admin`, `supervisor`, and `operator` on all endpoints (NFR-S-02).
+* [ ] Secrets scan shows zero secrets in repository (NFR-S-06).
+* [ ] Audit log immutability verified for all roles (NFR-C-02).
+
+### 5.3 Operations Readiness
+* [ ] Production environment provisioned (WBS 6.1.1); production deployment and smoke tests passed (WBS 6.1.2).
+* [ ] Monitoring and alerting configured (WBS 6.1.3).
+* [ ] Runbook and operations handover completed (WBS 6.1.4).
+* [ ] Health checks verified in production (NFR-D-02).
+
+### 5.4 Documentation and Handover
+* [ ] Final OpenAPI specification, error code catalog with changelog, and decision log are complete.
+* [ ] Requirements Specification traceability matrix shows no `<UNKNOWN>` story IDs or open verification gaps for release scope.
+* [ ] Open items OI-01 to OI-08 are closed or formally accepted with risk recorded.
+
+### 5.5 Acceptance Sign-off
+| Role | Name | Criterion | Signature | Date |
+| --- | --- | --- | --- | --- |
+| Project Sponsor | <UNKNOWN> | Go-live acceptance (WBS 6.1.5) | | |
+| Business Owner | <UNKNOWN> | Business rules accepted (REQ-001 to REQ-020) | | |
+| Technical Lead | <UNKNOWN> | Contract and error catalog baselined | | |
+| Security & Compliance Owner | <UNKNOWN> | Security reviews M1 and M4 closed | | |
+| QA / Test Lead | <UNKNOWN> | Verification evidence complete | | |
+| Project Manager | <UNKNOWN> | Release scope and risks recorded | | |
+
+---
+
+## 6. Exit Criteria Summary
+
+| Level | Mandatory Exit Evidence | Sign-off |
+| --- | --- | --- |
+| Story / WP | Tests green, peer review, OpenAPI and changelog updated, movement log asserted | Peer reviewer, QA Engineer |
+| Feature | Requirement coverage 100% for group, security review closed, concurrency tests passed | Technical Lead, Security & Compliance Owner |
+| Iteration | Pipeline green, demo held, no open Critical/High defects, coverage ≥ 80% | Business Owner, Project Manager |
+| Milestone (M1–M4) | Gate criteria in Section 4 met | Project Sponsor (go/no-go) |
+| Release | Section 5 criteria met, acceptance sign-off | Project Sponsor, all roles in Section 5.5 |
+
+---
+
+## 7. Governance of the Definition of Done
+
+* **Owner:** Technical Lead, with QA / Test Lead as co-owner (proposed; Team Charter Section 10 names the Project Manager and Technical Lead as charter owners).
+* **Review cadence:** At each milestone gate (M1–M4), and at least once per quarter (assumed, aligned with Team Charter Section 10).
+* **Triggers for ad hoc review:** Repeated defects escaping to later stages; a failed gate; a change to requirements or NFR thresholds; a new team member; a change to tooling or delivery approach.
+* **Change process:** Proposed change is posted to the issue tracker with rationale and affected requirement IDs. Technical Lead approves changes to the DoD within the baselined contract. Changes that weaken a threshold (for example coverage below 80%, performance targets, or security review requirements) require Project Sponsor approval and a formal change request, because they alter the success criteria in the Project Charter.
+* **Versioning:** Minor version for clarifications and added checks; major version when a threshold or a success criterion changes. Each change is recorded in the changelog with version, date, and description.
+* **Metrics tracked each iteration:** Percentage of stories meeting DoD on first demo; defects escaping to later iterations; coverage trend; movement log completeness; RBAC test coverage. Metrics are reviewed at the iteration retrospective.
+* **Retrospective input:** DoD items that were skipped, or that caused rework, are raised at the retrospective and either clarified (minor) or escalated (major).
+
+## 8. Open Items
+
+| # | Item | Owner |
+| --- | --- | --- |
+| DOD-OI-01 | Confirm tooling for coverage measurement and CI gate (WBS 2.4.4) | DevOps Engineer |
+| DOD-OI-02 | Name Security & Compliance Owner and sponsor (Charter Section 11) | Project Sponsor |
+| DOD-OI-03 | Confirm iteration cadence (two weeks, assumed) | Project Manager |
+| DOD-OI-04 | Confirm whether the feature-level security review is required for every feature or only for security-relevant features | Technical Lead |

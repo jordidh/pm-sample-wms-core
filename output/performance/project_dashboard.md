@@ -1,110 +1,145 @@
 # Project Dashboard: Warehouse Inventory & Storage Management REST API (WMS Core)
 
-## Document Control
-- **Document Title:** Project Dashboard
-- **Project Name:** Warehouse Inventory & Storage Management REST API (WMS Core)
-- **Current Version:** 1.1
-- **Status Date:** 2026-10-20
-- **Date:** 2026-10-20
+| Field | Value |
+| --- | --- |
+| Document | Project Dashboard (Executive Visual Radiator) |
+| Project Name | Warehouse Inventory & Storage Management REST API (WMS Core) |
+| Current Version | 1.0 |
+| Status Date | 2026-10-20 |
+| Date | 2026-10-20 |
+| Trigger | Baseline performance measurement (no actuals reported) |
 
 ## Changelog
+
 | Version | Date | Change Description |
-|---|---|---|
-| 1.0 | 2026-10-17 | Initial baseline performance measurement dashboard |
-| 1.1 | 2026-10-20 | New measurement at status date 2026-10-20 (previous status date 2026-10-17). Baselines unchanged (Business Case 1.0, WBS 1.1, Backlog 1.1, Schedule Model 1.1, Change Log 1.1; no approved change requests). No actuals reported: AC = 0 and physical percent complete = 0 for all Milestone 1 work packages. PV recomputed as the time-phased planned value at 2026-10-20, which is the full Milestone 1 schedule (project duration 10 days, all work packages finished by early finish day 10). EV = 0, CV = 0, SV = -160000, indexes CPI and SPI null or 0 as defined by the formulas. Forecast reset: EAC = BAC because CPI is undefined (no actuals); ETC = BAC; VAC = 0; TCPI = 1.0. S-curve extended to the schedule horizon. |
+| --- | --- | --- |
+| 1.0 | 2026-10-20 | Initial version |
 
-## 1. Executive RAG Status
-| Dimension | Status | Metric / Justification |
-|---|---|---|
-| **Overall** | Red | SPI is 0.0 (EV = $0.00 vs PV = $160,000.00) with work overdue against the baseline schedule. Schedule Red drives the overall rating. No actuals reported (AC = $0.00). |
-| **Scope** | Green | 100% of WBS elements and requirements defined in baseline scope (BAC = $160,000.00 for Milestone 1). Milestones 2-4 are not costed (see Assumptions). |
-| **Schedule** | Red | SPI is 0.0 (Work overdue against baseline schedule; EV = $0.00 vs PV = $160,000.00). SV = -$160,000.00. |
-| **Cost** | Green | CPI is undefined (null, AC = $0.00); no actual cost has been reported. EAC = $160,000.00 (default BAC), VAC = $0.00. Rated Green on the absence of recorded overrun only; not a measured cost performance result. |
-| **Quality** | Green | Quality gates established; automated test coverage target set at $\ge 80\%$. No test coverage measurements reported. |
-| **Risk** | Amber | Moderate-to-high residual risk exposure. Highest scores: RSK-01 (Score 20, Critical) and RSK-02 (Score 16, Critical). No issues have materialized. |
+## 1. Decision Summary (read first)
 
-## 2. EVM Performance Metrics
-| Metric | Value | Interpretation |
-|---|---|---|
-| **BAC** | $160,000.00 | Budget at Completion (Milestone 1 work packages only) |
-| **PV** | $160,000.00 | Planned Value as of 2026-10-20 (full Milestone 1 schedule) |
-| **EV** | $0.00 | Earned Value (no physical progress reported; 0% complete on all work packages) |
-| **AC** | $0.00 | Actual Cost (no actuals reported) |
-| **CV** | $0.00 | Cost Variance ($EV - AC$) |
-| **SV** | -$160,000.00 | Schedule Variance ($EV - PV$) |
-| **CPI** | null | Cost Performance Index ($EV / AC$); undefined because AC = 0 |
-| **SPI** | 0.0 | Schedule Performance Index ($EV / PV$) |
-| **EAC** | $160,000.00 | Estimate at Completion (default method BAC / CPI; CPI undefined, so EAC set to BAC) |
-| **ETC** | $160,000.00 | Estimate to Complete ($EAC - AC$) |
-| **VAC** | $0.00 | Variance at Completion ($BAC - EAC$) |
-| **TCPI** | 1.0 | To-Complete Performance Index ($(BAC - EV) / (BAC - AC)$) |
+**Overall RAG: RED (baseline not established; governance and funding undefined)**
 
-### 2.1 Work Package EVM Detail
-| WBS | Work Package | BAC ($) | % Complete | PV ($) | EV ($) | AC ($) |
-|---|---|---|---|---|---|---|
-| 1.1.1 | Core PostgreSQL Schema Design | 24,000.00 | 0% | 24,000.00 | 0.00 | 0.00 |
-| 1.1.2 | Migration Scripts & Rollback Mechanisms | 16,000.00 | 0% | 16,000.00 | 0.00 | 0.00 |
-| 1.2.1 | JWT/OAuth2 RBAC Token Validation | 24,000.00 | 0% | 24,000.00 | 0.00 | 0.00 |
-| 1.2.2 | Role-Based Permission Enforcement Decorators | 16,000.00 | 0% | 16,000.00 | 0.00 | 0.00 |
-| 1.3.1 | RFC 7807 problem+json Exception Handlers | 16,000.00 | 0% | 16,000.00 | 0.00 | 0.00 |
-| 1.3.2 | OpenAPI Documentation Skeleton Setup | 16,000.00 | 0% | 16,000.00 | 0.00 | 0.00 |
-| 1.4.1 | Dockerfile & Containerization Setup | 16,000.00 | 0% | 16,000.00 | 0.00 | 0.00 |
-| 1.4.2 | Automated CI Pipeline with Test Coverage Gates | 32,000.00 | 0% | 32,000.00 | 0.00 | 0.00 |
-| | **Total** | **160,000.00** | **0%** | **160,000.00** | **0.00** | **0.00** |
+**Decision needed from the Project Sponsor:**
+1. Name the Sponsor, Project Manager, Business Owner, and Technical Lead (Action A-01; Risk R-01, due Day 5).
+2. Confirm authority limits for budget and approval ceilings (Action A-02).
+3. Approve the Business Analyst to collect current-state baseline metrics (discrepancy rate, reconciliation hours, write-off value) before M2 funding (Action A-05; Risk R-02).
+4. Confirm the owner of the JWT/OAuth2 identity provider and test tenant before the 2.2.1 start (Action A-04; Risk R-08).
 
-## 3. Earned Value S-Curve
-Cumulative PV, EV, and AC by period (USD). Cumulative EV and AC are 0 through the status date.
+**Why RED:** The baseline is not established. BAC is 0 because no cost estimate exists, the Schedule Model has no activities, and no actuals or work package budgets were reported. Performance indices cannot be computed (CPI and SPI are null), so no colour can be justified by a measured index. The RED status reflects the three Critical risks (R-01, R-02, R-03, each scored 20) and the missing governance baseline, not a measured overrun.
 
-| Period | Date | Cumulative PV | Cumulative EV | Cumulative AC |
-|---|---|---|---|---|
-| Day 0 (Project start) | 2026-10-17 | 0.00 | 0.00 | 0.00 |
-| Day 2 | 2026-10-19 | 32,000.00 | 0.00 | 0.00 |
-| Day 3 | 2026-10-20 | 160,000.00 | 0.00 | 0.00 |
+## 2. RAG Status by Dimension
+
+| Dimension | RAG | Justifying Metric (2026-10-20) | Basis |
+| --- | --- | --- | --- |
+| Overall | RED | BAC = 0 (not established); CPI = null; SPI = null; 3 Critical risks | Baseline incomplete; governance preconditions open |
+| Scope | AMBER | Scope defined in charter and WBS; 0 change requests raised; 0 RFCs open; R-06 (score 12, High) on scope creep | Scope boundary is stable, but integration consumers are unidentified (A-03) |
+| Schedule | RED | SV = 0.0; SPI = null (PV = 0); Schedule Model: 0 activities, duration 0.0 days; R-01 and R-12 (scores 20 and 12) | No schedule baseline exists; WBS critical path (approx. 130 working days of durations, planning estimate) is not yet loaded |
+| Cost | RED | CPI = null (AC = 0); BAC = 0 (currency UNKNOWN); CV = 0.0; R-13 (score 16, High) | Cost baseline absent; funding gate depends on undelivered estimate (1.1.4) |
+| Quality | AMBER | 0 defects recorded in EVM data; ≥80% coverage gate and 100k stress test not yet executed; R-03 and R-04 (scores 20 and 16, High) | No quality evidence exists yet, so the rating reflects technical risk rather than measured defects |
+| Risk | RED | 3 Critical (R-01, R-02, R-03); 9 High (threats); overall exposure rated HIGH | Risk Register v1.0, Section 3.4 |
+
+**RAG thresholds applied:** CPI and SPI: Green ≥ 0.95; Amber 0.90–0.95; Red < 0.90, or null with work overdue. Both CPI and SPI are null (AC and PV are zero), so the Cost and Schedule ratings are set by the baseline gap, not by index values. Each rating must be re-tested when actuals and a populated schedule are available.
+
+## 3. Key Performance Indicators (EVM)
+
+Currency: UNKNOWN. All values are in the unit of the EVM source (UNKNOWN currency).
+
+| KPI | Value | Meaning | Status |
+| --- | --- | --- | --- |
+| BAC (Budget at Completion) | 0.0 | No cost estimate; placeholder only | Not established |
+| PV (Planned Value) | 0.0 | No time-phased schedule baseline | Not established |
+| EV (Earned Value) | 0.0 | No physical percent complete reported | No progress reported |
+| AC (Actual Cost) | 0.0 | No actuals reported | No actuals reported |
+| CV (Cost Variance = EV − AC) | 0.0 | No variance measurable | Not measurable |
+| SV (Schedule Variance = EV − PV) | 0.0 | No variance measurable | Not measurable |
+| CPI (EV / AC) | null | AC is zero | Not computable |
+| SPI (EV / PV) | null | PV is zero | Not computable |
+| EAC (Estimate at Completion) | 0.0 (placeholder) | BAC / CPI cannot be computed | Do not read as a forecast |
+| ETC (Estimate to Complete) | 0.0 (placeholder) | EAC − AC; not meaningful | Do not read as a forecast |
+| VAC (Variance at Completion = BAC − EAC) | 0.0 (placeholder) | Not meaningful | Do not read as a forecast |
+| TCPI (To-Complete Performance Index) | null | BAC = AC (both zero) | Not computable |
+
+**Note:** Values shown as 0 for EAC, ETC, and VAC are placeholders and must not be read as a forecast of zero cost.
+
+## 4. S-Curve (Cumulative PV, EV, AC)
+
+The S-curve series is empty. No period-by-period planned value can be derived from the empty schedule model, and no cost baseline exists to phase against. The chart below is a placeholder frame with no data points; it will be populated when the schedule model and cost baseline are issued.
 
 ```mermaid
 xychart-beta
-    title "Cumulative EVM S-Curve (USD)"
-    x-axis ["Day 0 2026-10-17", "Day 2 2026-10-19", "Day 3 2026-10-20"]
-    y-axis "Amount ($)" 0 --> 180000
-    line [0, 32000, 160000]
-    line [0, 0, 0]
-    line [0, 0, 0]
+    title "S-Curve: Cumulative PV, EV, AC (no data yet)"
+    x-axis "Reporting period" []
+    y-axis "Cumulative value (currency UNKNOWN)" 0 --> 1
+    line "PV" []
+    line "EV" []
+    line "AC" []
 ```
-*(Series order: Cumulative PV, Cumulative EV, Cumulative AC.)*
 
-## 4. Critical Milestones
+## 5. Critical Milestones
+
+Milestone dates are <UNKNOWN> (charter Section 4; Action A-09). Forecast dates cannot be stated because the Schedule Model is not populated.
+
 | Milestone | Baseline Date | Forecast Date | Status |
-|---|---|---|---|
-| Milestone 1: Core Architecture & Foundation Setup | 2026-10-27 | 2026-10-27 (not re-forecast; no actuals reported) | Pending Execution (0% complete; critical path 1.1.1 → 1.1.2 → 1.4.1 → 1.4.2 at zero float) |
+| --- | --- | --- | --- |
+| M1: Foundation (DB schema, auth/RBAC, RFC 7807 handler, OpenAPI skeleton, CI/CD) | <UNKNOWN> | <UNKNOWN> | Not started (no baseline); gated by R-01 |
+| M2: Hierarchy engines (location and container CRUD, nested moves, capacity) | <UNKNOWN> | <UNKNOWN> | Not started; funding gate held by R-02 |
+| M3: Stock operations (allocations, atomic split/merge/group, movement log) | <UNKNOWN> | <UNKNOWN> | Not started; concurrency risk R-03 |
+| M4: Production readiness (100k stress tests, EN/ES/CA bundles, Docker image, ≥80% coverage) | <UNKNOWN> | <UNKNOWN> | Not started; performance risk R-04 |
+| Production go-live approval | <UNKNOWN> | <UNKNOWN> | Not started; depends on M4 and Section 6 of Charter |
 
-## 5. Variance Commentary & Corrective Actions
-- **Schedule Variance (SV = -$160,000.00, SPI = 0.0):** No physical progress or actual cost has been reported against any Milestone 1 work package as of 2026-10-20. EV is therefore zero while PV reflects the full planned Milestone 1 schedule. The SPI of 0.0 is a reporting-gap signal, not yet a measured performance result.
-- **Cost Variance (CV = $0.00, CPI null):** No actual cost is recorded, so CPI cannot be computed. VAC = $0.00 is a default result of EAC = BAC and carries no performance information.
-- **Methodology caveat (PV):** The 2026-10-17 measurement showed PV = $160,000.00, which implies all work was planned complete on day 0. This is inconsistent with the 10-day schedule model and is flagged for correction. PV is kept at $160,000.00 for consistency with the approved prior measurement.
-- **Corrective Actions:**
-  1. Obtain physical percent-complete and actual cost (timesheet/effort) for all eight Milestone 1 work packages before the next measurement; re-run EVM at that point.
-  2. Initiate or confirm execution of WBS 1.1.1 (Core PostgreSQL Schema Design) and WBS 1.2.1 (JWT/OAuth2 RBAC Token Validation), the two zero-float starting activities.
-  3. Protect the zero-float critical path (1.1.1 → 1.1.2 → 1.4.1 → 1.4.2) with a daily critical-path check; apply the 3-day schedule contingency reserve only with Sponsor approval (RSK-11).
-  4. Correct the PV baseline methodology (day-based schedule vs. cumulative PV) and re-baseline the time-phased PV in the next EVM revision.
+**Schedule basis:** The WBS critical path is listed as a sequence only (1.1.1 → 1.1.4 → 2.1.x … → 6.1.5). The sum of listed durations is approximately 130 working days, and 30 working days of schedule contingency is recommended (Risk Register Section 5.1). Neither figure has been validated against a populated schedule model.
 
-## 6. Top Risks, Open Changes & Decisions Needed
-- **Top Risks:**
-  - *RSK-01 (Concurrency Race Conditions, Score: 20, Critical):* Requires optimistic locking (ETag/version headers) and atomic multi-resource transactions. Owner: Backend Developer.
-  - *RSK-02 (Query Performance Degradation, Score: 16, Critical):* Requires optimized indexing in WBS 1.1.1 and stress testing in Milestone 4. Owner: Database Architect.
-  - *RSK-09 (Unquantified Business Case / Funding Baseline, Score: 12, High):* No headcount, currency budget, or quantified benefit baseline; blocks ROI verification. Owner: Project Manager.
-  - *RSK-11 (Milestone 1 Critical Path Slip, Score: 12, High):* Zero float on four activities. Owner: Project Manager.
-- **Open Changes / RFCs:** None. Change Log 1.1 records no change proposed and no threshold breached (critical path delay 0.0 days; cost delta 0.0%).
-- **Decisions Needed:**
-  1. Executive Sponsor: confirm authorization to commence Milestone 1 execution and approve the baseline risk mitigation strategies.
-  2. Executive Sponsor and Project Manager: name the Project Manager and confirm the actuals reporting cadence so EV and AC can be measured at the next status date.
-  3. Executive Sponsor: approve the methodology correction for PV (time-phased baseline) and direct the quantified Business Case baseline (RSK-09) to be established in Milestone 1.
+## 6. Variance Commentary
 
-## 7. Assumptions & Limitations
-- BAC of $160,000.00 is the sum of the eight Milestone 1 work package budgets from EVM Metrics 1.0. Work package budgets are allocated pro rata to effort hours at an assumed uniform rate of 1,000 USD per effort hour; the source does not state this rate explicitly.
-- Milestones 2-4 are adaptive and held in the Product Backlog with story points only. They carry no BAC here, so this measurement is not the full project cost and BAC must be re-baselined once the backlog is costed.
-- The schedule start is assumed to be 2026-10-17. The status date 2026-10-20 falls at day 3 of the schedule model; the full Milestone 1 PV is retained at $160,000.00 for consistency with the approved 1.0 measurement and flagged for correction.
-- Currency (USD) is carried from EVM Metrics 1.0. Business Case 1.0 states no currency budget.
-- The S-curve planned value between days 0 and 2 is shown only at the two source-derived points; the intermediate distribution is not given in the source and is not estimated here.
-- Cost RAG is Green only because no overrun is recorded; it is not a measured performance result. Quality RAG reflects the target and gates set, not measured coverage.
-- Risk Register 1.1 items RSK-08 to RSK-12 are monitor-only and are not reflected in the EVM numbers.
-- Thresholds applied: CPI and SPI Green ≥ 0.95, Amber 0.90–0.95, Red < 0.90 (or null with work overdue). SPI = 0.0 with work overdue is Red; CPI is null, so the Cost RAG is not computed from an index.
+| Variance | Current Value | Cause | Corrective Action | Owner (Role) |
+| --- | --- | --- | --- | --- |
+| No cost baseline (BAC = 0) | Not established | Cost estimates (Business Case Section 4) are <UNKNOWN>; no rate card or currency | Complete three-point cost estimate in WBS 1.1.4; sponsor approves BAC | Project Manager (cost); Project Sponsor (approval) |
+| No schedule baseline (PV = 0, SV = 0) | Not established | Schedule Model has 0 activities; milestone dates <UNKNOWN> | Populate schedule model activities from WBS dictionary; set milestone dates before M2 | Project Manager |
+| No actuals (AC = 0) | Not established | Project execution not yet reported | Establish time-recording and cost-capture process from the first working period | Project Manager |
+| No progress (EV = 0) | Not established | No physical percent complete reported for any work package | Define percent-complete rules per WBS package and report at each status cycle | Project Manager; Technical Lead |
+| Baseline not complete (R-02) | No current-state metrics | Records of discrepancy rate, reconciliation hours, write-off value do not exist yet | Business Analyst collects baseline from existing records for a defined sample; if absent, define proxy metrics and log as assumption | Business Owner (A-05); Project Manager (accountable) |
+
+## 7. Top Risks
+
+| Rank | ID | Score | Band | Risk (short name) | Response | Owner (Role) |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1 | R-01 | 20 | Critical | Governance and funding undefined | Escalate | Project Sponsor |
+| 1 | R-02 | 20 | Critical | No current-state baseline for ROI | Mitigate | Business Analyst (accountable: Project Manager) |
+| 1 | R-03 | 20 | Critical | Concurrency defects in stock operations | Mitigate | Solution Architect; Project Manager |
+| 4 | R-04 | 16 | High | Performance failure at 100k records | Mitigate | Data Architect; Performance Engineer |
+| 4 | R-05 | 16 | High | Late schema change | Mitigate | Data Architect |
+| 4 | R-11 | 16 | High | Team below WBS role count | Mitigate | Project Manager |
+| 4 | R-13 | 16 | High | Cost estimate exceeded | Mitigate | Project Manager; Project Sponsor |
+
+Full register: Risk Register v1.0 (20 risks: 3 Critical, 9 High, 4 Medium, 2 Low, 1 Medium opportunity counted separately as shown in Section 3.4).
+
+## 8. Open Changes and RFCs
+
+| Item | Status | Detail |
+| --- | --- | --- |
+| RFC-001 | Not opened | No threshold breached; no change proposed |
+| Change requests | 0 open | Change Log v1.0 records "No change" |
+| Baseline version | 1.0 (unchanged) | No change to BAC or PV |
+| Contingency draws | None | Schedule contingency: 30 working days recommended (held by PM); cost contingency: 20% of approved cost base, not yet sizable |
+
+## 9. Recommended Reserves (for reference)
+
+| Reserve | Recommended Value | Basis | Release Condition |
+| --- | --- | --- | --- |
+| Schedule contingency | 30 working days (approx. 6 weeks) | Risk Register Section 5.1 | Released only through change control |
+| Cost contingency | 20% of approved cost base | Risk Register Section 5.2 | Sponsor approval per draw; revisit at M1 gate |
+
+## 10. Assumptions and Evidence Limits
+
+* BAC is not established. Business Case Section 4 cost estimates are <UNKNOWN>, and the currency is UNKNOWN. BAC is recorded as 0.
+* The Schedule Model has an empty activities list, an empty critical path, and project duration of 0.0 days. PV is recorded as 0.
+* No work package budgets exist. The WBS gives hours and durations without cost rates, so no per-package rows are produced.
+* No actuals were reported (AC = 0) and no physical percent complete was reported (EV = 0).
+* CPI, SPI, and TCPI are null because their denominators or numerators are zero. EAC, ETC, and VAC are placeholders.
+* The S-curve has no data points.
+* Milestone dates are <UNKNOWN>; project finish date cannot be stated.
+* The baseline is unchanged at version 1.0; no RFC is open.
+
+## 11. Next Reporting Date
+
+**Next dashboard update: at the first reporting cycle after Action A-01 is closed, and no later than Day 5 (R-01 trigger).** Monthly thereafter, aligned to the Steering Committee (C-02) and Sponsor status report (C-01).

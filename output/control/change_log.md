@@ -1,23 +1,36 @@
 # Change Log: Warehouse Inventory & Storage Management REST API (WMS Core)
 
-## Document Control
-- **Project Name:** Warehouse Inventory & Storage Management REST API (WMS Core)
-- **Current Version:** 1.1
-- **Date:** 2026-10-20
+| Field | Value |
+| --- | --- |
+| Document | Change Log |
+| Project Name | Warehouse Inventory & Storage Management REST API (WMS Core) |
+| Current Version | 1.0 |
+| Date | 2026-10-20 |
+| Trigger | Baseline risk assessment |
 
 ## Changelog
+
 | Version | Date | Change Description |
-|---|---|---|
-| 1.0 | 2026-10-17 | Initial baseline change log - no change proposed |
-| 1.1 | 2026-10-20 | Baseline risk assessment trigger re-evaluated. No change request was proposed (the proposed change request field was empty) and no emerging issues or external conditions were submitted. No new change entries recorded. The Risk Register 1.1 gaps (RSK-08 to RSK-12) are recorded as linked risks for monitoring only; they are not proposed changes and do not breach any threshold. Minor refinement, so the version is bumped from 1.0 to 1.1. |
+| --- | --- | --- |
+| 1.0 | 2026-10-20 | Initial version |
 
-## Change Log Table
-| Change ID | Date | Description | Requester | Affected Baselines | Affected WBS / Backlog Items | Critical Path Delay (Days) | Cost Delta (%) | Thresholds Breached? | Decision | Status | Linked Risks |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| N/A | 2026-10-17 | No change proposed under baseline risk assessment. | N/A | None | None | 0.0 | 0.0% | No | no_change | Closed | None |
-| N/A | 2026-10-20 | No change proposed under baseline risk assessment (re-evaluation against Business Case 1.0, WBS 1.1, Backlog 1.1, Schedule Model 1.1, Risk Register 1.1). | N/A | None | None | 0.0 | 0.0% | No | no_change | Closed | RSK-08, RSK-09, RSK-10, RSK-11, RSK-12 (monitor only) |
+## 1. Change Entries
 
-## Notes
-- RFC-001 was not raised: no change was proposed, so no threshold (critical path delay > 3 days, or cost delta > 5% of work package budget or BAC) was tested as breached.
-- Assumptions: Cost delta is 0.0% because no change was proposed. No currency budget is stated in the Business Case, so cost deltas can only be expressed as a percentage of effort, not of a monetary BAC.
-- Baselines remain unchanged: Business Case 1.0, WBS 1.1, Backlog 1.1, Schedule Model 1.1.
+No change was proposed in this assessment. The proposed change request field was empty, and no emerging issues, risks, or external conditions were recorded in the trigger input. No change entries are recorded. No RFC-001 entry is created.
+
+| ID | Date | Description | Requester | Affected Baselines (Scope / Schedule / Cost) | Affected WBS Packages or Backlog Items | Critical Path Delay (days) | Cost Delta (%) | Thresholds Breached | Decision | Status | Linked Risks |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| None | 2026-10-20 | No proposed change in trigger input | N/A | N/A | N/A | 0.0 | 0.0 | No | No change | N/A | N/A |
+
+## 2. Assumptions
+
+* The baseline risk assessment is a baseline review, not a change request. The risk register (R-01 to R-20) is used as context only.
+* Thresholds applied for reference: critical path delay greater than 3 days, or cost delta greater than 5% of the work package budget or BAC.
+* Cost figures (BAC and work package budgets) are <UNKNOWN> in the Business Case, so no cost delta can be quantified in currency or percent.
+* The Schedule Model has no activities and a project duration of 0.0 days, so critical path delay cannot be measured against a populated baseline.
+* Risks in the register (for example R-01, R-03, R-11, R-12, R-13) are threats to the baseline. They are not changes. They trigger no baseline update until a change is proposed or a contingency is drawn through change control.
+
+## 3. Pending Items
+
+* No RFC is pending. RFC-001 is not opened because no threshold is breached.
+* Change approval status: not applicable (no change proposed).
